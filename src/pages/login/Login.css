@@ -1,0 +1,24 @@
+@media (max-width: 576px) {
+  .content-position-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .logo-padding-login {
+    padding-bottom: 100px;
+  }
+  .content-padding-login {
+    margin-top: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  .form-size-login {
+    width: 70%;
+  }
+}
+
+.content-padding-login {
+    margin-top: 25vh;
+}

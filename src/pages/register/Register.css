@@ -1,0 +1,20 @@
+@media (max-width: 576px) {
+    .content-position-regis {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .logo-padding-regis {
+      padding-bottom: 100px;
+    }
+    .content-padding-regis {
+      margin-top: auto;
+    }
+  }
+  
+  @media (min-width: 576px) {
+    .form-size-regis {
+      width: 70%;
+    }
+  }
