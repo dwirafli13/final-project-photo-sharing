@@ -1,0 +1,17 @@
+.side-bar {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 280px;
+}
+
+@media (max-width: 1200px) {
+  .side-bar {
+    width: 4.5rem;
+  }
+  .photo-profile {
+    width: 24px;
+    height: 24px;
+  }
+}

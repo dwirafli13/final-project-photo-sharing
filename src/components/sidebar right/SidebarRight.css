@@ -1,0 +1,11 @@
+.side-bar-right {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+}
+@media (max-width: 1200px) {
+  .side-bar-disapear {
+    display: none;
+  }
+}

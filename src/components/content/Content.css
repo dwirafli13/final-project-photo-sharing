@@ -1,0 +1,37 @@
+.content {
+  margin-left: 230px;
+  margin-right: 230px;
+}
+
+@media (max-width: 1200px) {
+  .content {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .content {
+    margin-right: 0;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .content {
+    margin-right: 0;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.navbar-content {
+    position: sticky;
+    top: 0;
+}
