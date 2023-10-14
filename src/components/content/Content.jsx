@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Content = () => {
-  const [explore, setExplore] = useState({});
+  const [explore, setExplore] = useState([]);
   const apiKey = "c7b411cc-0e7c-4ad1-aa3f-822b00e7734b";
 
   const getExplorePost = () => {
@@ -22,7 +22,6 @@ const Content = () => {
       .then((res) => {
         const data = res?.data?.data?.posts;
         setExplore(data);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -42,11 +41,26 @@ const Content = () => {
       </nav>
       {explore.map((item, key) => (
         <div key={key} className="card mb-3">
-          <div className="card-body">
-            <img src={item?.user?.profilePictureUrl} className="rounded-circle photo-profile" width={40} height={40}/>
-            <p>{item?.user?.username}</p>
+          <div className="card-body d-flex">
+            <img
+              src={item?.user?.profilePictureUrl}
+              className="rounded-circle photo-profile"
+              width={40}
+              height={40}
+            />
+            <p className="ms-2 card-text">{item?.user?.username}</p>
           </div>
-          <img src={item?.imageUrl} className="card-img-top"/>
+          <img src={item?.imageUrl} className="card-img-top" />
+          <div className="card-body">
+            <div className="btn-group">
+              <button className="btn card-text">Like</button>
+              <button className="btn card-text">Comment</button>
+            </div>
+            <p className="card-text">{item?.totalLikes} Likes</p>
+            <p className="card-text">
+              <strong>{item?.user?.username}</strong> {item?.caption}
+            </p>
+          </div>
         </div>
       ))}
     </div>

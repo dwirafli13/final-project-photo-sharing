@@ -4,22 +4,22 @@ import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.clear()
-    navigate("/")
-  }
+    localStorage.clear();
+    navigate("/");
+  };
   return (
     <>
       <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark side-bar d-none d-md-inline">
-        <a
-          href="/"
+        <Link
+          to={"/home"}
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         >
           <img src="yellow icon logo.svg" width={40} />
           <span className="fs-4 d-none d-xl-inline">ShutterStory</span>
-        </a>
+        </Link>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
