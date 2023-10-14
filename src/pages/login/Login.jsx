@@ -7,7 +7,7 @@ import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const apiKey = "c7b411cc-0e7c-4ad1-aa3f-822b00e7734b";
 
   const handleChangeEmail = (e) => {
@@ -35,7 +35,7 @@ const Login = () => {
       )
       .then((res) => {
         localStorage.setItem("token", res?.data?.token);
-        navigate("/home")
+        navigate("/home");
         console.log(res);
       })
       .catch((err) => {
@@ -47,7 +47,7 @@ const Login = () => {
   return (
     <>
       <div className="container-fluid content-padding-login">
-        <div className="row align-items-center content-position-login">
+        <div className="row align-items-center content-position-login logo-background">
           <div className="col text-center logo-padding-login">
             <img
               src="yellow grey logo.svg"
@@ -66,7 +66,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                className="form-control"
+                className="form-control mb-2"
                 id="exampleFormControlInput1"
                 placeholder="name@example.com"
                 onChange={handleChangeEmail}
@@ -89,7 +89,10 @@ const Login = () => {
               </button>
               <p>
                 Don't have an account?
-                <Link to={"/register"}>Register</Link>
+                <Link to={"/register"} className="text-decoration-none">
+                  {" "}
+                  Register Here
+                </Link>
               </p>
             </div>
           </div>

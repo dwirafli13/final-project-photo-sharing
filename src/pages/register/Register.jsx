@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Register.css"
+import "./Register.css";
 
 const Register = () => {
   return (
     <>
-      <div className="container-fluid content-padding-regis">
+      <div className="container-fluid content-padding-regis bg-tertiary">
         <div className="row align-items-center content-position-regis">
           <div className="col text-center logo-padding-regis">
             <img
@@ -25,7 +25,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control mb-2"
                 id="exampleFormControlInput1"
                 placeholder="John Doe"
               />
@@ -35,7 +35,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control mb-2"
                 id="exampleFormControlInput1"
                 placeholder="john123"
               />
@@ -45,7 +45,7 @@ const Register = () => {
               </label>
               <input
                 type="email"
-                className="form-control"
+                className="form-control mb-2"
                 id="exampleFormControlInput1"
                 placeholder="johndoe2@example.com"
               />
@@ -56,7 +56,7 @@ const Register = () => {
               <input
                 type="password"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control mb-2"
               />
 
               <label htmlFor="inputPassword5" className="form-label">
@@ -65,20 +65,20 @@ const Register = () => {
               <input
                 type="password"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control mb-2"
               />
 
               <label for="formFile" class="form-label">
                 Profile Picture
               </label>
-              <input class="form-control" type="file" id="formFile" />
+              <input class="form-control mb-2" type="file" id="formFile" />
 
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Phone Number
               </label>
               <input
                 type="number"
-                className="form-control"
+                className="form-control mb-2"
                 id="exampleFormControlInput1"
                 placeholder="0812XXXXXXXX"
               />
@@ -88,7 +88,10 @@ const Register = () => {
               </button>
               <p>
                 Already have an account?
-                <Link to={"/"}>Login</Link>
+                <Link to={"/"} className="text-decoration-none">
+                  {" "}
+                  Login
+                </Link>
               </p>
             </div>
           </div>
