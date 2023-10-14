@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Content.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 const Content = () => {
   const [explore, setExplore] = useState([]);
@@ -34,14 +35,10 @@ const Content = () => {
     getExplorePost();
   }, []);
   return (
-    <div className="content">
-      <nav className="nav nav-pills nav-justified navbar-content mb-3">
-        <button className="nav-link btn btn-primary">Explore</button>
-        <button className="nav-link btn btn-primary">Following</button>
-      </nav>
+    <div className="content mt-5">
       {explore.map((item, key) => (
         <div key={key} className="card mb-3">
-          <div className="card-body d-flex">
+          <div className="card-body d-flex align-items-center">
             <img
               src={item?.user?.profilePictureUrl}
               className="rounded-circle photo-profile"
@@ -63,6 +60,7 @@ const Content = () => {
           </div>
         </div>
       ))}
+      <Navbar />
     </div>
   );
 };
