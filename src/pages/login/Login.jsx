@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Login.css"
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate()
+  const apiKey = "c7b411cc-0e7c-4ad1-aa3f-822b00e7734b";
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -20,10 +23,19 @@ const Login = () => {
       email: email,
       password: password,
     };
+    const headers = {
+      apiKey: apiKey,
+      "Content-Type": "application/json",
+    };
     axios
-      .post("https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/login", payload)
+      .post(
+        "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/login",
+        payload,
+        { headers: headers }
+      )
       .then((res) => {
-        // localStorage.setItem("token", res?.data?.data?.token);
+        localStorage.setItem("token", res?.data?.token);
+        navigate("/home")
         console.log(res);
       })
       .catch((err) => {
@@ -68,7 +80,11 @@ const Login = () => {
                 className="form-control"
                 onChange={handleChangePass}
               />
-              <button type="button" className="btn btn-primary w-100 mt-3" onClick={handleLogin}>
+              <button
+                type="button"
+                className="btn btn-primary w-100 mt-3"
+                onClick={handleLogin}
+              >
                 Login
               </button>
               <p>

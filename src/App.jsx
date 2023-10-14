@@ -4,12 +4,27 @@ import Login from "./pages/login/Login";
 import User from "./pages/user/User";
 import Register from "./pages/register/Register";
 import { useRoutes } from "react-router";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const routes = [
   { path: "/", element: <Login /> },
   { path: "/register", element: <Register /> },
-  { path: "/home", element: <Home /> },
-  { path: "/user", element: <User /> },
+  {
+    path: "/home",
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/user",
+    element: (
+      <ProtectedRoute>
+        <User />
+      </ProtectedRoute>
+    ),
+  },
 ];
 
 function App() {

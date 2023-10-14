@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const BottomNavbar = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate("/")
+  }
   return (
     <>
       <nav className="navbar navbar-light bg-dark border-top navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom">
@@ -41,9 +47,9 @@ const BottomNavbar = () => {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <Link className="dropdown-item" to={"/"}>
-                    Sign out
-                  </Link>
+                  <button className="dropdown-item" onClick={handleLogout}>
+                    Log Out
+                  </button>
                 </li>
               </ul>
             </div>

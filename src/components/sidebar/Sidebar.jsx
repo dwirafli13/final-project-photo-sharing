@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.clear()
+    navigate("/")
+  }
   return (
     <>
       <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark side-bar d-none d-md-inline">
@@ -65,9 +72,9 @@ const Sidebar = () => {
               <hr className="dropdown-divider" />
             </li>
             <li>
-              <Link className="dropdown-item" to={"/"}>
-                Sign out
-              </Link>
+              <button className="dropdown-item" onClick={handleLogout}>
+                Log Out
+              </button>
             </li>
           </ul>
         </div>
