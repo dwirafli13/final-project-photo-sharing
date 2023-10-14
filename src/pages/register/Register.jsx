@@ -9,7 +9,7 @@ const Register = () => {
         <div className="row align-items-center content-position-regis">
           <div className="col text-center logo-padding-regis">
             <img
-              src="logoipsum-297.svg"
+              src="yellow grey logo.svg"
               alt="logo ipsum"
               height={"75%"}
               width={"75%"}

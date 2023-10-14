@@ -5,30 +5,36 @@ import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <>
-      <div
-        className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark side-bar d-none d-md-inline"
-      >
+      <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark side-bar d-none d-md-inline">
         <a
           href="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         >
-          <img src="3.png" width={40}/><span className="fs-4 d-none d-xl-inline">ShutterStory</span>
+          <img src="yellow icon logo.svg" width={40} />
+          <span className="fs-4 d-none d-xl-inline">ShutterStory</span>
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
-            <a href="#" className="nav-link text-white" aria-current="page">
-              <i className="fs-5 bi bi-house"></i><span className="ms-3 d-none d-xl-inline">Home</span>
+            <Link
+              to={"/home"}
+              className="nav-link text-white"
+              aria-current="page"
+            >
+              <i className="fs-5 bi bi-house"></i>
+              <span className="ms-3 d-none d-xl-inline">Home</span>
+            </Link>
+          </li>
+          <li>
+            <a href="#" className="nav-link text-white">
+              <i className="fs-5 bi bi-person-gear"></i>
+              <span className="ms-3 d-none d-xl-inline">Update Profile</span>
             </a>
           </li>
           <li>
             <a href="#" className="nav-link text-white">
-            <i className="fs-5 bi bi-search"></i><span className="ms-3 d-none d-xl-inline">Search</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-            <i className="fs-5 bi bi-plus-square"></i><span className="ms-3 d-none d-xl-inline">Create Post</span>
+              <i className="fs-5 bi bi-plus-square"></i>
+              <span className="ms-3 d-none d-xl-inline">Create Post</span>
             </a>
           </li>
         </ul>
@@ -51,17 +57,17 @@ const Sidebar = () => {
           </a>
           <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to={"/user"}>
                 Profile
-              </a>
+              </Link>
             </li>
             <li>
               <hr className="dropdown-divider" />
             </li>
             <li>
-              <a className="dropdown-item" href="#">
+              <Link className="dropdown-item" to={"/"}>
                 Sign out
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

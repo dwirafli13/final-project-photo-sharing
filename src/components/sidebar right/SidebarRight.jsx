@@ -16,24 +16,6 @@ const SidebarRight = () => {
           <span className="fs-4">Your Following</span>
         </a>
         <hr />
-        <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
-            <a href="#" className="nav-link text-white" aria-current="page">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              Search
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              Create Post
-            </a>
-          </li>
-        </ul>
-        <hr />
       </div>
     </div>
   );
