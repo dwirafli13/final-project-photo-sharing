@@ -33,10 +33,10 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            <Link to={'/edit-profile'} className="nav-link text-white">
               <i className="fs-5 bi bi-person-gear"></i>
-              <span className="ms-3 d-none d-xl-inline">Update Profile</span>
-            </a>
+              <span className="ms-3 d-none d-xl-inline">Edit Profile</span>
+            </Link>
           </li>
           <li>
             <a href="#" className="nav-link text-white">

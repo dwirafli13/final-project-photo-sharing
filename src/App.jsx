@@ -3,6 +3,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import User from "./pages/user/User";
 import Register from "./pages/register/Register";
+import EditProfile from "./pages/edit profile/EditProfile";
 import { useRoutes } from "react-router";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -22,6 +23,14 @@ const routes = [
     element: (
       <ProtectedRoute>
         <User />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/edit-profile",
+    element: (
+      <ProtectedRoute>
+        <EditProfile />
       </ProtectedRoute>
     ),
   },
