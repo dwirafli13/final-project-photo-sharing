@@ -100,3 +100,15 @@ export const myFollowingData = () => {
       throw err;
     });
 };
+
+export const loggedUserData = () => {
+  return axios
+    .get(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/user",
+      { headers: config }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+}

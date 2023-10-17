@@ -9,7 +9,6 @@ const useMyFollowing = () => {
       .then((res) => {
         const data = res?.data?.data?.users;
         setMyFollowing(data);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);

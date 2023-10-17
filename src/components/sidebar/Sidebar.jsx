@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
+import useLoggedUser from "../../hooks/useLoggedUser";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const {loggedUser} = useLoggedUser()
 
   const handleLogout = () => {
     localStorage.clear();
@@ -54,7 +56,7 @@ const Sidebar = () => {
             aria-expanded="false"
           >
             <img
-              src="https://github.com/mdo.png"
+              src={loggedUser?.profilePictureUrl}
               alt=""
               width="32"
               height="32"
