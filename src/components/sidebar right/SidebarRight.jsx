@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useMyFollowing from "../../hooks/useMyFollowing";
 import "./SidebarRight.css";
+import axios from "axios";
 
 const SidebarRight = () => {
+  const { myFollowing } = useMyFollowing();
+
   return (
     <div className="side-bar-disapear">
       <div
@@ -16,6 +20,17 @@ const SidebarRight = () => {
           <span className="fs-4">Your Following</span>
         </a>
         <hr />
+        {myFollowing.map((item, key) => (
+          <div key={key} className="d-flex align-items-center mb-3">
+            <img
+              src={item.profilePictureUrl}
+              className="rounded-circle photo-profile"
+              width={40}
+              height={40}
+            />
+            <p className="ms-2">{item.username}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

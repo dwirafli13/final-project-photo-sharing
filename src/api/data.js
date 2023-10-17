@@ -88,3 +88,15 @@ export const followingPostData = () => {
       throw err;
     });
 };
+
+export const myFollowingData = () => {
+  return axios
+    .get(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/my-following?size=10&page=1",
+      { headers: config }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
