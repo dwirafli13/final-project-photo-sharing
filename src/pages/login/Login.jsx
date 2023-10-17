@@ -1,49 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import useLogin from "../../hooks/useLogin";
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const apiKey = "c7b411cc-0e7c-4ad1-aa3f-822b00e7734b";
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errLogin,
+    setErrLogin,
+    handleLogin,
+  } = useLogin();
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangePass = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleLogin = () => {
-    const payload = {
-      email: email,
-      password: password,
-    };
-    const headers = {
-      apiKey: apiKey,
-      "Content-Type": "application/json",
-    };
-    axios
-      .post(
-        "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/login",
-        payload,
-        { headers: headers }
-      )
-      .then((res) => {
-        localStorage.setItem("token", res?.data?.token);
-        navigate("/home");
-        console.log(res);
-      })
-      .catch((err) => {
-        // console.log(err?.response?.data?.message);
-        // setErrLogin(err?.response?.data?.message);
-        console.log(err);
-      });
-  };
   return (
     <>
       <div className="container-fluid content-padding-login">
@@ -60,6 +30,9 @@ const Login = () => {
           <div className="col">
             <h1>Share Your Great Moment</h1>
             <p>Please Login First</p>
+            {!!errLogin.length && (
+              <p className="alert alert-danger">{errLogin}</p>
+            )}
             <div className="mb-3 form-size-login">
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Email address
@@ -69,7 +42,7 @@ const Login = () => {
                 className="form-control mb-2"
                 id="exampleFormControlInput1"
                 placeholder="name@example.com"
-                onChange={handleChangeEmail}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <label htmlFor="inputPassword5" className="form-label">
                 Password
@@ -78,7 +51,7 @@ const Login = () => {
                 type="password"
                 id="inputPassword5"
                 className="form-control"
-                onChange={handleChangePass}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"

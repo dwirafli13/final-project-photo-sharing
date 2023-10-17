@@ -1,14 +1,13 @@
 import React from "react";
-import "./Content.css";
-import useExplore from "../../hooks/useExplore";
-import Navbar from "./Navbar";
+import useFollowingPost from "../../hooks/useFollowingPost";
+import Navbar from "../content/Navbar";
 
-const Content = () => {
-  const { explore } = useExplore();
+const FollowingContent = () => {
+  const { followingPost } = useFollowingPost();
 
   return (
     <div className="content mt-5">
-      {explore.map((item, key) => (
+      {followingPost.map((item, key) => (
         <div key={key} className="card mb-3">
           <div className="card-body d-flex align-items-center">
             <img
@@ -37,4 +36,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default FollowingContent;
