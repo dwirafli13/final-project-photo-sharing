@@ -21,14 +21,18 @@ const SidebarRight = () => {
         </a>
         <hr />
         {myFollowing.map((item, key) => (
-          <div key={key} className="d-flex align-items-center mb-3">
-            <img
-              src={item.profilePictureUrl}
-              className="rounded-circle photo-profile"
-              width={40}
-              height={40}
-            />
-            <p className="ms-2">{item.username}</p>
+          <div key={key} className="d-flex align-items-center mb-2">
+            <div>
+              <img
+                src={item.profilePictureUrl}
+                className="rounded-circle photo-profile"
+                width={30}
+                height={30}
+              />
+            </div>
+            <div>
+              <p className="ms-1">{item.username}</p>
+            </div>
           </div>
         ))}
       </div>

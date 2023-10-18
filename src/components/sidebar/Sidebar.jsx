@@ -6,7 +6,7 @@ import useLoggedUser from "../../hooks/useLoggedUser";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const {loggedUser} = useLoggedUser()
+  const { loggedUser } = useLoggedUser();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -35,7 +35,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to={'/edit-profile'} className="nav-link text-white">
+            <Link to={"/edit-profile"} className="nav-link text-white">
               <i className="fs-5 bi bi-person-gear"></i>
               <span className="ms-3 d-none d-xl-inline">Edit Profile</span>
             </Link>
@@ -62,7 +62,9 @@ const Sidebar = () => {
               height="32"
               className="rounded-circle me-2 photo-profile"
             />
-            <strong className="d-none d-xl-inline">mdo</strong>
+            <strong className="d-none d-xl-inline">
+              {loggedUser?.username}
+            </strong>
           </a>
           <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
             <li>

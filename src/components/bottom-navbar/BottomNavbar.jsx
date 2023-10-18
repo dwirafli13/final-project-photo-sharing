@@ -1,13 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useLoggedUser from "../../hooks/useLoggedUser";
 
 const BottomNavbar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { loggedUser } = useLoggedUser();
 
   const handleLogout = () => {
-    localStorage.clear()
-    navigate("/")
-  }
+    localStorage.clear();
+    navigate("/");
+  };
   return (
     <>
       <nav className="navbar navbar-light bg-dark border-top navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom">
@@ -35,7 +37,12 @@ const BottomNavbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i className="fs-5 bi bi-person-circle"></i>
+                <img
+                  src={loggedUser?.profilePictureUrl}
+                  width="34"
+                  height="34"
+                  className="rounded-circle me-2 photo-profile"
+                />
               </a>
               <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-start text-small shadow">
                 <li>
