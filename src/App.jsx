@@ -28,7 +28,7 @@ const routes = [
     ),
   },
   {
-    path: "/user",
+    path: "/user/:id",
     element: (
       <ProtectedRoute>
         <User />

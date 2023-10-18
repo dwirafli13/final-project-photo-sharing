@@ -16,7 +16,7 @@ const BottomNavbar = () => {
         <ul className="navbar-nav nav-justified w-100">
           <li className="nav-item">
             <Link to={"/home"} className="nav-link text-white">
-              <img src="yellow icon logo.svg" width={28} />
+              <img src="yellow-icon-logo.svg" width={28} />
             </Link>
           </li>
           <li className="nav-item">

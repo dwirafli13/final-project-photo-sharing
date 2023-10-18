@@ -19,7 +19,7 @@ const Sidebar = () => {
           to={"/home"}
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
         >
-          <img src="yellow icon logo.svg" width={40} />
+          <img src="yellow-icon-logo.svg" width={40} />
           <span className="fs-4 d-none d-xl-inline">ShutterStory</span>
         </Link>
         <hr />
