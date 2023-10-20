@@ -8,6 +8,9 @@ const useExplore = () => {
   const handleUser = (id) => {
     navigate(`/user/${id}`);
   };
+  const handleMyProfile = (id) => {
+    navigate(`/my-profile/${id}`)
+  }
 
   const getExplorePost = () => {
     exploreData()
@@ -24,7 +27,7 @@ const useExplore = () => {
     getExplorePost();
   }, []);
 
-  return { explore, handleUser };
+  return { explore, handleUser, handleMyProfile };
 };
 
 export default useExplore;

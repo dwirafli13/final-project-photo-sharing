@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 
-const UserContent = () => {
-  const [userPost, setUserPost] = useState([]);
+const MyProfileContent = () => {
+  const [myProfilePost, setMyProfilePost] = useState([]);
   const param = useParams();
   const apiKey = "c7b411cc-0e7c-4ad1-aa3f-822b00e7734b";
   const token = localStorage.getItem("token");
@@ -13,7 +13,7 @@ const UserContent = () => {
     "Content-Type": "application/json",
   };
 
-  const getUserPost = () => {
+  const getMyProfilePost = () => {
     axios
       .get(
         `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/users-post/${param.id}?size=10&page=1`,
@@ -21,7 +21,7 @@ const UserContent = () => {
       )
       .then((res) => {
         const data = res?.data?.data?.posts;
-        setUserPost(data);
+        setMyProfilePost(data);
       })
       .catch((err) => {
         console.log(err);
@@ -29,15 +29,19 @@ const UserContent = () => {
   };
 
   useEffect(() => {
-    getUserPost();
+    getMyProfilePost();
   }, []);
-
   return (
     <div>
       <div className="row">
-        {userPost.map((item, key) => (
+        {myProfilePost.map((item, key) => (
           <div key={key} className="col">
-            <img src={item.imageUrl} width={200} height={200} className="img-fluid"/>
+            <img
+              src={item.imageUrl}
+              width={200}
+              height={200}
+              className="img-fluid"
+            />
           </div>
         ))}
       </div>
@@ -45,4 +49,4 @@ const UserContent = () => {
   );
 };
 
-export default UserContent;
+export default MyProfileContent;

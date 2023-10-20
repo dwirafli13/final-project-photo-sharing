@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useLoggedUser from "../../hooks/useLoggedUser";
+import useExplore from "../../hooks/useExplore";
 
 const BottomNavbar = () => {
   const navigate = useNavigate();
   const { loggedUser } = useLoggedUser();
+  const { handleMyProfile } = useExplore();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -46,9 +48,12 @@ const BottomNavbar = () => {
               </a>
               <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-start text-small shadow">
                 <li>
-                  <Link className="dropdown-item" to={"/user"}>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => handleMyProfile(loggedUser?.id)}
+                  >
                     Profile
-                  </Link>
+                  </button>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />

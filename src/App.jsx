@@ -7,6 +7,7 @@ import EditProfile from "./pages/edit-profile/EditProfile";
 import { useRoutes } from "react-router";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import FollowingPost from "./pages/following-post/FollowingPost";
+import MyProfile from "./pages/my-profile/MyProfile";
 
 const routes = [
   { path: "/", element: <Login /> },
@@ -40,6 +41,14 @@ const routes = [
     element: (
       <ProtectedRoute>
         <EditProfile />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/my-profile/:id",
+    element: (
+      <ProtectedRoute>
+        <MyProfile />
       </ProtectedRoute>
     ),
   },

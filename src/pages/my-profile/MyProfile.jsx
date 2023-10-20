@@ -1,14 +1,13 @@
 import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Content from "../../components/content/Content";
 import SidebarRight from "../../components/sidebar right/SidebarRight";
 import BottomNavbar from "../../components/bottom-navbar/BottomNavbar";
-import "./Home.css";
+import MyProfileContent from "../../components/my-profile-content/MyProfileContent";
 
-const Home = () => {
+const MyProfile = () => {
   return (
-    <div className="container">
-      <Content />
+    <div>
+      <MyProfileContent />
       <Sidebar />
       <SidebarRight />
       <BottomNavbar />
@@ -16,4 +15,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MyProfile;

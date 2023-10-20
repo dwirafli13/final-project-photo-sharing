@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
 import useLoggedUser from "../../hooks/useLoggedUser";
+import useExplore from "../../hooks/useExplore";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const { loggedUser } = useLoggedUser();
+  const { handleMyProfile } = useExplore();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -68,9 +70,12 @@ const Sidebar = () => {
           </a>
           <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
             <li>
-              <Link className="dropdown-item" to={"/user"}>
+              <button
+                className="dropdown-item"
+                onClick={() => handleMyProfile(loggedUser?.id)}
+              >
                 Profile
-              </Link>
+              </button>
             </li>
             <li>
               <hr className="dropdown-divider" />
