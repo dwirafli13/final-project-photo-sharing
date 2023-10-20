@@ -5,12 +5,7 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router";
 
 const Content = () => {
-  const { explore } = useExplore();
-  const navigate = useNavigate();
-
-  const handleUser = (id) => {
-    navigate(`/user/${id}`);
-  };
+  const { explore , handleUser} = useExplore();
 
   return (
     <div className="content mt-5">
