@@ -18,13 +18,13 @@ const BottomNavbar = () => {
         <ul className="navbar-nav nav-justified w-100">
           <li className="nav-item">
             <Link to={"/home"} className="nav-link text-white">
-              <img src="yellow-icon-logo.svg" width={28} />
+              <img src="src/assets/yellow-icon-logo.svg" width={28} />
             </Link>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <Link to={"/edit-profile"} className="nav-link text-white">
               <i className="fs-5 bi bi-person-gear"></i>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a href="#" className="nav-link text-white">
