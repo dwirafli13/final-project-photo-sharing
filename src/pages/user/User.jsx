@@ -5,7 +5,7 @@ import UserContent from "../../components/user-content/UserContent";
 
 const User = () => {
   return (
-    <div>
+    <div className="container">
       <UserContent />
       <Sidebar />
       <BottomNavbar />

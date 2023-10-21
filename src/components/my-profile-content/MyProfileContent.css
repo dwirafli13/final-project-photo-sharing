@@ -1,0 +1,57 @@
+.my-profile-content {
+  margin-left: 230px;
+  margin-right: 0px;
+  margin-bottom: 150px;
+}
+
+@media (max-width: 1200px) {
+  .my-profile-content {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .my-profile-content {
+    margin-right: 0;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .my-profile-content {
+    margin-right: 0;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-profile-content {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.image-responsive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-responsive img {
+  width: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.header-center {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.photo-profile-margin {
+  margin-right: 2rem;
+}

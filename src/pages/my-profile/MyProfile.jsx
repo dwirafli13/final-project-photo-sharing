@@ -6,10 +6,9 @@ import MyProfileContent from "../../components/my-profile-content/MyProfileConte
 
 const MyProfile = () => {
   return (
-    <div>
+    <div className="container">
       <MyProfileContent />
       <Sidebar />
-      <SidebarRight />
       <BottomNavbar />
     </div>
   );
