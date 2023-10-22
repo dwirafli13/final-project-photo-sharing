@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router";
 
 const Content = () => {
-  const { explore , handleUser} = useExplore();
+  const { explore, handleUser } = useExplore();
 
   return (
     <div className="content mt-5">
@@ -25,7 +25,14 @@ const Content = () => {
               <p className="ms-2 card-text">{item?.user?.username}</p>
             </button>
           </div>
-          <img src={item?.imageUrl} className="card-img-top" />
+          <div className="image-responsive">
+            <img
+              src={item?.imageUrl}
+              className="card-img-top"
+              width={400}
+              height={400}
+            />
+          </div>
           <div className="card-body">
             <div className="btn-group">
               <button className="btn card-text">Like</button>

@@ -32,6 +32,18 @@
 }
 
 .navbar-position {
-    position: fixed;
-    top: 0;
+  position: fixed;
+  top: 0;
+}
+
+.image-responsive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-responsive img {
+  width: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
 }
