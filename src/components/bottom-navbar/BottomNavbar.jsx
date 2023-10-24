@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useLoggedUser from "../../hooks/useLoggedUser";
 import useExplore from "../../hooks/useExplore";
+import logoShutterStory from "../../assets/yellow-icon-logo.svg";
 
 const BottomNavbar = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const BottomNavbar = () => {
         <ul className="navbar-nav nav-justified w-100">
           <li className="nav-item">
             <Link to={"/home"} className="nav-link text-white">
-              <img src="src/assets/yellow-icon-logo.svg" width={28} />
+              <img src={logoShutterStory} width={28} />
             </Link>
           </li>
           <li className="nav-item">
