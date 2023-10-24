@@ -72,7 +72,9 @@ const UserContent = () => {
               <strong>{userById?.username}</strong>
             </p>
             <p>
-              <button className="btn btn-primary">Follow</button>
+              {userById.id !== loggedUser.id ? (
+                <button className="btn btn-primary">Follow</button>
+              ) : null}
             </p>
           </div>
           <div className="d-flex gap-5 mt-3">
