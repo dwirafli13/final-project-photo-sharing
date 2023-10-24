@@ -5,7 +5,7 @@ import Navbar from "../content/Navbar";
 
 const FollowingContent = () => {
   const { followingPost } = useFollowingPost();
-  const { handleUser } = useExplore();
+  const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
 
   return (
     <div className="content mt-5">
@@ -28,7 +28,21 @@ const FollowingContent = () => {
           <img src={item?.imageUrl} className="card-img-top" />
           <div className="card-body">
             <div className="btn-group">
-              <button className="btn card-text">Like</button>
+              {isLike ? (
+                <button
+                  className="btn card-text"
+                  onClick={() => handleUnlikePost(item?.id)}
+                >
+                  Unlike
+                </button>
+              ) : (
+                <button
+                  className="btn card-text"
+                  onClick={() => handleLikePost(item?.id)}
+                >
+                  Like
+                </button>
+              )}
               <button className="btn card-text">Comment</button>
             </div>
             <p className="card-text">{item?.totalLikes} Likes</p>

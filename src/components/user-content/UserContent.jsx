@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import useLoggedUser from "../../hooks/useLoggedUser";
 import axios from "axios";
 
 const UserContent = () => {
+  const { loggedUser } = useLoggedUser();
   const [userPost, setUserPost] = useState([]);
   const [userById, setUserById] = useState({});
   const [totalPost, setTotalPost] = useState("");

@@ -2,10 +2,10 @@ import React from "react";
 import "./Content.css";
 import useExplore from "../../hooks/useExplore";
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router";
 
 const Content = () => {
-  const { explore, handleUser } = useExplore();
+  const { explore, handleUser, isLike, handleLikePost, handleUnlikePost } =
+    useExplore();
 
   return (
     <div className="content mt-5">
@@ -35,7 +35,21 @@ const Content = () => {
           </div>
           <div className="card-body">
             <div className="btn-group">
-              <button className="btn card-text">Like</button>
+              {isLike ? (
+                <button
+                  className="btn card-text"
+                  onClick={() => handleUnlikePost(item?.id)}
+                >
+                  Unlike
+                </button>
+              ) : (
+                <button
+                  className="btn card-text"
+                  onClick={() => handleLikePost(item?.id)}
+                >
+                  Like
+                </button>
+              )}
               <button className="btn card-text">Comment</button>
             </div>
             <p className="card-text">{item?.totalLikes} Likes</p>

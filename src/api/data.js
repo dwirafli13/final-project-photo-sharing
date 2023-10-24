@@ -103,24 +103,44 @@ export const myFollowingData = () => {
 
 export const loggedUserData = () => {
   return axios
-    .get(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/user",
+    .get("https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/user", {
+      headers: config,
+    })
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const likePostData = (postId) => {
+  const payload = {
+    postId: postId,
+  };
+  return axios
+    .post(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/like",
+      payload,
       { headers: config }
     )
     .then((res) => res)
     .catch((err) => {
       throw err;
     });
-}
+};
 
-// export const userPostData = () => {
-//   return axios
-//     .get(
-//       `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/users-post/${id}?size=10&page=1`,
-//       { headers: config }
-//     )
-//     .then((res) => res)
-//     .catch((err) => {
-//       throw err;
-//     });
-// }
+export const unlikePostData = (postId) => {
+  const payload = {
+    postId: postId,
+  };
+  return axios
+    .post(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unlike",
+      payload,
+      { headers: config }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
+
