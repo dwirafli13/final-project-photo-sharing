@@ -37,24 +37,30 @@ const Content = () => {
             <div className="btn-group">
               {isLike ? (
                 <button
-                  className="btn card-text"
+                  className="btn card-text p-0"
                   onClick={() => handleUnlikePost(item?.id)}
                 >
                   Unlike
                 </button>
               ) : (
                 <button
-                  className="btn card-text"
+                  className="btn card-text p-0"
                   onClick={() => handleLikePost(item?.id)}
                 >
                   Like
                 </button>
               )}
-              <button className="btn card-text">Comment</button>
+              <button className="btn card-text p-0 ms-2">Comment</button>
             </div>
             <p className="card-text">{item?.totalLikes} Likes</p>
             <p className="card-text">
-              <strong>{item?.user?.username}</strong> {item?.caption}
+              <button
+                className="btn p-0"
+                onClick={() => handleUser(item?.userId)}
+              >
+                <strong>{item?.user?.username}</strong>
+              </button>{" "}
+              {item?.caption}
             </p>
           </div>
         </div>

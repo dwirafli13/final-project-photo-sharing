@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useLoggedUser from "../../hooks/useLoggedUser";
+import useFollow from "../../hooks/useFollow";
 import axios from "axios";
 
 const UserContent = () => {
   const { loggedUser } = useLoggedUser();
+  const { isFollow, handleFollow, handleUnfollow } = useFollow();
   const [userPost, setUserPost] = useState([]);
   const [userById, setUserById] = useState({});
   const [totalPost, setTotalPost] = useState("");
@@ -73,7 +75,25 @@ const UserContent = () => {
             </p>
             <p>
               {userById.id !== loggedUser.id ? (
-                <button className="btn btn-primary">Follow</button>
+                !isFollow ? (
+                  <>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleFollow(param.id)}
+                    >
+                      Follow
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => handleUnfollow(param.id)}
+                    >
+                      Unfollow
+                    </button>
+                  </>
+                )
               ) : null}
             </p>
           </div>

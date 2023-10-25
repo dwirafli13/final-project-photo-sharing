@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useMyFollowing from "../../hooks/useMyFollowing";
+import useExplore from "../../hooks/useExplore";
 import "./SidebarRight.css";
 import axios from "axios";
 
 const SidebarRight = () => {
   const { myFollowing } = useMyFollowing();
+  const { handleUser } = useExplore();
 
   return (
     <div className="side-bar-disapear">
@@ -31,7 +33,12 @@ const SidebarRight = () => {
               />
             </div>
             <div>
-              <p className="ms-1">{item.username}</p>
+              <button
+                className="ms-1 btn text-white p-0"
+                onClick={() => handleUser(item?.id)}
+              >
+                {item.username}
+              </button>
             </div>
           </div>
         ))}

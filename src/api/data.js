@@ -144,3 +144,30 @@ export const unlikePostData = (postId) => {
     });
 };
 
+export const followData = (userIdFollow) => {
+  const payload = {
+    userIdFollow: userIdFollow,
+  };
+  return axios
+    .post(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/follow",
+      payload,
+      { headers: config }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const unfollowData = (userId) => {
+  return axios
+    .delete(
+      `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unfollow/${userId}`,
+      { headers: config }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
