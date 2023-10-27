@@ -8,7 +8,13 @@ const Content = () => {
     useExplore();
 
   return (
-    <div className="content mt-5" id="nav-explore" role="tabpanel" aria-labelledby="nav-explore-tab" tabIndex={0}>
+    <div
+      className="content mt-5"
+      id="nav-explore"
+      role="tabpanel"
+      aria-labelledby="nav-explore-tab"
+      tabIndex={0}
+    >
       {explore.map((item, key) => (
         <div key={key} className="card mb-3">
           <div className="card-body d-flex align-items-center">
@@ -73,18 +79,23 @@ const Content = () => {
                 <div className="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <img
-                        src={item?.user?.profilePictureUrl}
-                        className="rounded-circle photo-profile"
-                        width={40}
-                        height={40}
-                      />
-                      <p
-                        className="modal-title fs-5 ms-2"
-                        id="staticBackdropLabel"
+                      <button
+                        className="d-flex align-items-center btn p-0"
+                        onClick={() => handleUser(item?.userId)}
                       >
-                        {item?.user?.username}
-                      </p>
+                        <img
+                          src={item?.user?.profilePictureUrl}
+                          className="rounded-circle photo-profile"
+                          width={40}
+                          height={40}
+                        />
+                        <p
+                          className="modal-title fs-5 ms-2"
+                          id="staticBackdropLabel"
+                        >
+                          {item?.user?.username}
+                        </p>
+                      </button>
                       <button
                         type="button"
                         className="btn-close"
