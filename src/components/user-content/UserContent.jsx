@@ -55,7 +55,7 @@ const UserContent = () => {
     {
       getUserPost(), getUserById();
     }
-  }, []);
+  }, [isFollow]);
 
   return (
     <div className="my-profile-content mt-3">

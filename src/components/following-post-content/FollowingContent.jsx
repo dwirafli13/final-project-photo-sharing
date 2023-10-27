@@ -8,7 +8,13 @@ const FollowingContent = () => {
   const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
 
   return (
-    <div className="content mt-5">
+    <div
+      className="content mt-5"
+      id="nav-following"
+      role="tabpanel"
+      aria-labelledby="nav-following-tab"
+      tabIndex={0}
+    >
       {followingPost.map((item, key) => (
         <div key={key} className="card mb-3">
           <div className="card-body d-flex align-items-center">

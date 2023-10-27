@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { followData, unfollowData } from "../api/data";
-import useMyFollowing from "./useMyFollowing";
 
 const useFollow = () => {
   const [isFollow, setIsFollow] = useState(false);
