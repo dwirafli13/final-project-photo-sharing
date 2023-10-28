@@ -229,3 +229,34 @@ export const createPostData = (imageUrl, caption) => {
       throw err;
     });
 };
+
+export const updateProfileData = (
+  name,
+  username,
+  email,
+  profilePictureUrl,
+  phoneNumber,
+  bio,
+  website
+) => {
+  const payload = {
+    name: name,
+    username: username,
+    email: email,
+    profilePictureUrl: profilePictureUrl,
+    phoneNumber: phoneNumber,
+    bio: bio,
+    website: website,
+  };
+
+  return axios
+    .post(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/update-profile",
+      payload,
+      { headers: config }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
