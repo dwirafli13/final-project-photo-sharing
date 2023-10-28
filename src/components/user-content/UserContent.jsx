@@ -8,7 +8,7 @@ import axios from "axios";
 const UserContent = () => {
   const { loggedUser } = useLoggedUser();
   const { isFollow, handleFollow, handleUnfollow } = useFollow();
-  const { handleUser, isLike } = useExplore();
+  const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
   const [userPost, setUserPost] = useState([]);
   const [userById, setUserById] = useState({});
   const [totalPost, setTotalPost] = useState("");

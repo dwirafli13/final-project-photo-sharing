@@ -7,7 +7,7 @@ import useExplore from "../../hooks/useExplore";
 
 const MyProfileContent = () => {
   const { loggedUser } = useLoggedUser();
-  const { handleUser, isLike } = useExplore();
+  const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
   const [myProfilePost, setMyProfilePost] = useState([]);
   const [totalPost, setTotalPost] = useState("");
   const param = useParams();
