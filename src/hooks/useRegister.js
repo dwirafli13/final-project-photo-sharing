@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { registerData } from "../api/data";
-import useUploadImage from "./useUploadImage";
 
 const useRegister = () => {
   const [name, setName] = useState("");
@@ -49,6 +48,7 @@ const useRegister = () => {
     errRegister,
     handleRegister,
     setImageUrl,
+    imageUrl
   };
 };
 

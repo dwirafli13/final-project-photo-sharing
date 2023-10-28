@@ -220,7 +220,7 @@ export const createPostData = (imageUrl, caption) => {
   };
   return axios
     .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/create-post",
       payload,
       { headers: config }
     )

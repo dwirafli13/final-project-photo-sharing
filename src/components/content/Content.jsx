@@ -10,7 +10,13 @@ const Content = () => {
     useExplore();
   const { handleImageChange, handleUpload, imgUrl } =
     useUploadImageCreatePost();
-  const { setImageUrl, setCaption, handleCreatePost } = useCreatePost();
+  const {
+    setImageUrl,
+    setCaption,
+    handleCreatePost,
+    imageUrl,
+    successMessage,
+  } = useCreatePost();
 
   return (
     <div
@@ -189,32 +195,38 @@ const Content = () => {
               ></button>
             </div>
             <div className="modal-body d-flex flex-column">
-              <input
+              {/* <input
                 type="file"
                 onChange={handleImageChange}
                 accepts="image/*"
               />
               <button onClick={handleUpload} encType="multipart/form-data">
                 Upload
-              </button>
+              </button> */}
+              {!!successMessage.length && (
+                <p className="alert alert-success">{successMessage}</p>
+              )}
               <input
                 type="text"
-                value={imgUrl}
+                className="form-control mb-2"
+                placeholder="https//yourimage.com/yourimage.jpg"
                 onChange={(e) => setImageUrl(e.target.value)}
-                disabled
               />
               <input
                 type="text"
-                placeholder="caption"
+                className="form-control mb-2"
+                placeholder="Your Caption"
                 onChange={(e) => setCaption(e.target.value)}
               />
               <img
-                src={imgUrl}
-                className="img-fluid"
+                src={imageUrl}
+                className="img-fluid mb-2"
                 width={200}
                 height={200}
               />
-              <button onClick={handleCreatePost}>Create Post</button>
+              <button onClick={handleCreatePost} className="btn btn-success">
+                Create Post
+              </button>
             </div>
           </div>
         </div>

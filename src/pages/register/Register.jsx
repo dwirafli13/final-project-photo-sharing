@@ -18,6 +18,7 @@ const Register = () => {
     errRegister,
     handleRegister,
     setImageUrl,
+    imageUrl,
   } = useRegister();
   return (
     <>
@@ -37,7 +38,7 @@ const Register = () => {
             <p>Please Register</p>
             <div className="mb-3 form-size-regis">
               {/* <form encType="multipart/form-data"> */}
-              <label htmlFor="formFile" className="form-label">
+              {/* <label htmlFor="formFile" className="form-label">
                 Profile Picture
               </label>
               <div className="d-flex align-items-center flex-column">
@@ -72,9 +73,29 @@ const Register = () => {
                     height={200}
                   />
                 </div>
-              </div>
+              </div> */}
 
               {/* </form> */}
+              <label htmlFor="exampleFormControlInput7" className="form-label">
+                Profile Picture URL
+              </label>
+              <div className="d-flex align-items-center flex-column">
+                <input
+                  type="text"
+                  className="form-control mb-2"
+                  id="exampleFormControlInput7"
+                  placeholder="https//yourimage.com/yourimage.jpg"
+                  onChange={(e) => setImageUrl(e.target.value)}
+                />
+                <div>
+                  <img
+                    src={imageUrl}
+                    className="img-fluid rounded-circle mt-2"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+              </div>
               <hr />
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Name
