@@ -2,6 +2,8 @@ import axios from "axios";
 
 const apiKey = "c7b411cc-0e7c-4ad1-aa3f-822b00e7734b";
 const token = localStorage.getItem("token");
+const temporaryToken =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pZnRhaGZhcmhhbkBnbWFpbC5jb20iLCJ1c2VySWQiOiJhNTRjNTllNy1hMWI2LTRhYzQtYWU3Yi05ODg1YTk4ZWQ4NjkiLCJyb2xlIjoiZ2VuZXJhbCIsImlhdCI6MTY4MTAxMzEzN30.AxhIjhRXMoFoxldGOqwLur6jNBC-mx9-Ig18RWfYkLM";
 const headers = {
   apiKey: apiKey,
   "Content-Type": "application/json",
@@ -10,6 +12,11 @@ const config = {
   Authorization: `Bearer ${token}`,
   apiKey: apiKey,
   "Content-Type": "application/json",
+};
+const configRegister = {
+  Authorization: `Bearer ${temporaryToken}`,
+  apiKey: apiKey,
+  "Content-Type": "multipart/form-data",
 };
 
 export const loginData = (email, password) => {
@@ -36,7 +43,7 @@ export const registerData = (
   email,
   password,
   passwordRepeat,
-  profilePictureUrl,
+  imgUrl,
   phoneNumber,
   bio,
   website
@@ -47,7 +54,7 @@ export const registerData = (
     email: email,
     password: password,
     passwordRepeat: passwordRepeat,
-    profilePictureUrl: profilePictureUrl,
+    profilePictureUrl: imgUrl,
     phoneNumber: phoneNumber,
     bio: bio,
     website: website,
@@ -165,6 +172,22 @@ export const unfollowData = (userId) => {
     .delete(
       `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unfollow/${userId}`,
       { headers: config }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const uploadImageRegisterData = (formData) => {
+  // const payload = {
+  //   image: formData,
+  // };
+  return axios
+    .post(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
+      formData,
+      { headers: configRegister }
     )
     .then((res) => res)
     .catch((err) => {
