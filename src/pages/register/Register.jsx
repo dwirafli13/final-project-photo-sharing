@@ -52,8 +52,8 @@ const Register = () => {
                   type="text"
                   className="form-control mb-2"
                   id="exampleFormControlInput6"
-                  placeholder={imgUrl}
-                  onChange={() => setImageUrl(imgUrl)}
+                  value={imgUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
                   disabled
                 />
                 <button

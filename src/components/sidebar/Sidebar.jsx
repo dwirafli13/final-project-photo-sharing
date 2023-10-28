@@ -44,10 +44,16 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <a href="#" className="nav-link text-white">
+            {/* Modal Button Trigger */}
+            <button
+              className="nav-link text-white"
+              data-bs-toggle="modal"
+              data-bs-target="#createPostModal"
+            >
               <i className="fs-5 bi bi-plus-square"></i>
               <span className="ms-3 d-none d-xl-inline">Create Post</span>
-            </a>
+            </button>
+            {/* Modal Button Trigger */}
           </li>
         </ul>
         <hr />
@@ -94,24 +100,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-{
-  /* <div className="side-bar container">
-  <img src="logoipsum-297.svg" />
-  <ul>
-    <li>
-      <Link to={"/home"}>Home</Link>
-    </li>
-    <li>
-      <Link to={"/home"}>Search</Link>
-    </li>
-    <li>
-      <Link to={"/user"}>Profile</Link>
-    </li>
-    <li>Create Post</li>
-    <li>
-      <button>Log Out</button>
-    </li>
-  </ul>
-</div>; */
-}

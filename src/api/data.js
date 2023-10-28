@@ -18,6 +18,11 @@ const configRegister = {
   apiKey: apiKey,
   "Content-Type": "multipart/form-data",
 };
+const configCreatePost = {
+  Authorization: `Bearer ${token}`,
+  apiKey: apiKey,
+  "Content-Type": "multipart/form-data",
+};
 
 export const loginData = (email, password) => {
   const payload = {
@@ -188,6 +193,36 @@ export const uploadImageRegisterData = (formData) => {
       "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
       formData,
       { headers: configRegister }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const uploadImageCreatePostData = (formData) => {
+  return axios
+    .post(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
+      formData,
+      { headers: configCreatePost }
+    )
+    .then((res) => res)
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const createPostData = (imageUrl, caption) => {
+  const payload = {
+    imageUrl: imageUrl,
+    caption: caption,
+  };
+  return axios
+    .post(
+      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
+      payload,
+      { headers: config }
     )
     .then((res) => res)
     .catch((err) => {
