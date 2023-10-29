@@ -2,6 +2,7 @@ import React from "react";
 import useFollowingPost from "../../hooks/useFollowingPost";
 import useExplore from "../../hooks/useExplore";
 import Navbar from "../content/Navbar";
+import CreatePostModal from "../modal/CreatePostModal";
 
 const FollowingContent = () => {
   const { followingPost } = useFollowingPost();
@@ -148,6 +149,7 @@ const FollowingContent = () => {
           </div>
         </div>
       ))}
+      <CreatePostModal />
       <Navbar />
     </div>
   );

@@ -9,7 +9,7 @@ const useUploadImageCreatePost = () => {
   };
   const handleUpload = () => {
     if (selectedImage) {
-      const formData = new FormData();
+      let formData = new FormData();
       formData.append("image", selectedImage);
 
       uploadImageCreatePostData(formData)

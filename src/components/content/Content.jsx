@@ -4,19 +4,11 @@ import useExplore from "../../hooks/useExplore";
 import Navbar from "./Navbar";
 import useUploadImageCreatePost from "../../hooks/useUploadImageCreatePost";
 import useCreatePost from "../../hooks/useCreatePost";
+import CreatePostModal from "../modal/CreatePostModal";
 
 const Content = () => {
   const { explore, handleUser, isLike, handleLikePost, handleUnlikePost } =
     useExplore();
-  const { handleImageChange, handleUpload, imgUrl } =
-    useUploadImageCreatePost();
-  const {
-    setImageUrl,
-    setCaption,
-    handleCreatePost,
-    imageUrl,
-    successMessage,
-  } = useCreatePost();
 
   return (
     <div
@@ -173,65 +165,7 @@ const Content = () => {
           </div>
         </div>
       ))}
-      {/* Modal Content Create Post */}
-      <div
-        className="modal fade"
-        id="createPostModal"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
-          <div className="modal-content">
-            <div className="modal-header">
-              <p className="modal-title fs-5 ms-2">Create Post</p>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body d-flex flex-column">
-              {/* <input
-                type="file"
-                onChange={handleImageChange}
-                accepts="image/*"
-              />
-              <button onClick={handleUpload} encType="multipart/form-data">
-                Upload
-              </button> */}
-              {!!successMessage.length && (
-                <p className="alert alert-success">{successMessage}</p>
-              )}
-              <input
-                type="text"
-                className="form-control mb-2"
-                placeholder="https//yourimage.com/yourimage.jpg"
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-              <input
-                type="text"
-                className="form-control mb-2"
-                placeholder="Your Caption"
-                onChange={(e) => setCaption(e.target.value)}
-              />
-              <img
-                src={imageUrl}
-                className="img-fluid mb-2"
-                width={200}
-                height={200}
-              />
-              <button onClick={handleCreatePost} className="btn btn-success">
-                Create Post
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Modal Content Create Post*/}
+      <CreatePostModal />
       <Navbar />
     </div>
   );

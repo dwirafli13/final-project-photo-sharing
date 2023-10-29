@@ -36,10 +36,6 @@ export const loginData = (email, password) => {
       payload,
       { headers: headers }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const registerData = (
@@ -48,7 +44,7 @@ export const registerData = (
   email,
   password,
   passwordRepeat,
-  imgUrl,
+  imageUrl,
   phoneNumber,
   bio,
   website
@@ -59,7 +55,7 @@ export const registerData = (
     email: email,
     password: password,
     passwordRepeat: passwordRepeat,
-    profilePictureUrl: imgUrl,
+    profilePictureUrl: imageUrl,
     phoneNumber: phoneNumber,
     bio: bio,
     website: website,
@@ -71,10 +67,6 @@ export const registerData = (
       payload,
       { headers: headers }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const exploreData = () => {
@@ -83,10 +75,6 @@ export const exploreData = () => {
       `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/explore-post?size=10&page=1`,
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const followingPostData = () => {
@@ -95,10 +83,6 @@ export const followingPostData = () => {
       "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/following-post?size=10&page=1",
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const myFollowingData = () => {
@@ -107,10 +91,6 @@ export const myFollowingData = () => {
       "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/my-following?size=10&page=1",
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const loggedUserData = () => {
@@ -118,10 +98,6 @@ export const loggedUserData = () => {
     .get("https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/user", {
       headers: config,
     })
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const likePostData = (postId) => {
@@ -134,10 +110,6 @@ export const likePostData = (postId) => {
       payload,
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const unlikePostData = (postId) => {
@@ -150,10 +122,6 @@ export const unlikePostData = (postId) => {
       payload,
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const followData = (userIdFollow) => {
@@ -166,10 +134,6 @@ export const followData = (userIdFollow) => {
       payload,
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const unfollowData = (userId) => {
@@ -178,10 +142,6 @@ export const unfollowData = (userId) => {
       `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unfollow/${userId}`,
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const uploadImageRegisterData = (formData) => {
@@ -194,10 +154,6 @@ export const uploadImageRegisterData = (formData) => {
       formData,
       { headers: configRegister }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const uploadImageCreatePostData = (formData) => {
@@ -207,10 +163,6 @@ export const uploadImageCreatePostData = (formData) => {
       formData,
       { headers: configCreatePost }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const createPostData = (imageUrl, caption) => {
@@ -224,10 +176,6 @@ export const createPostData = (imageUrl, caption) => {
       payload,
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };
 
 export const updateProfileData = (
@@ -255,8 +203,4 @@ export const updateProfileData = (
       payload,
       { headers: config }
     )
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
 };

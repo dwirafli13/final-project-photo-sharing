@@ -28,7 +28,11 @@ const BottomNavbar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link text-white">
+            <a
+              data-bs-toggle="modal"
+              data-bs-target="#createPostModal"
+              className="nav-link text-white"
+            >
               <i className="fs-5 bi bi-plus-square"></i>
             </a>
           </li>

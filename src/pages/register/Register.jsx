@@ -38,7 +38,7 @@ const Register = () => {
             <p>Please Register</p>
             <div className="mb-3 form-size-regis">
               {/* <form encType="multipart/form-data"> */}
-              {/* <label htmlFor="formFile" className="form-label">
+              <label htmlFor="formFile" className="form-label">
                 Profile Picture
               </label>
               <div className="d-flex align-items-center flex-column">
@@ -46,7 +46,7 @@ const Register = () => {
                   className="form-control mb-2"
                   type="file"
                   id="formFile"
-                  accepts="image/*"
+                  // accepts="image/*"
                   onChange={handleImageChange}
                 />
                 <input
@@ -59,8 +59,8 @@ const Register = () => {
                 />
                 <button
                   className="btn btn-success"
-                  htmlFor="#formFile"
-                  encType="multipart/form-data"
+                  // htmlFor="#formFile"
+                  // encType="multipart/form-data"
                   onClick={handleUpload}
                 >
                   Upload Image
@@ -73,10 +73,10 @@ const Register = () => {
                     height={200}
                   />
                 </div>
-              </div> */}
+              </div>
 
               {/* </form> */}
-              <label htmlFor="exampleFormControlInput7" className="form-label">
+              {/* <label htmlFor="exampleFormControlInput7" className="form-label">
                 Profile Picture URL
               </label>
               <div className="d-flex align-items-center flex-column">
@@ -95,7 +95,7 @@ const Register = () => {
                     height={200}
                   />
                 </div>
-              </div>
+              </div> */}
               <hr />
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Name

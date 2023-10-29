@@ -4,6 +4,7 @@ import axios from "axios";
 import "./MyProfileContent.css";
 import useLoggedUser from "../../hooks/useLoggedUser";
 import useExplore from "../../hooks/useExplore";
+import CreatePostModal from "../modal/CreatePostModal";
 
 const MyProfileContent = () => {
   const { loggedUser } = useLoggedUser();
@@ -22,7 +23,7 @@ const MyProfileContent = () => {
   const getMyProfilePost = () => {
     axios
       .get(
-        `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/users-post/${param.id}?size=10&page=1`,
+        `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/users-post/${param.id}?size=20&page=1`,
         { headers: config }
       )
       .then((res) => {
@@ -186,6 +187,7 @@ const MyProfileContent = () => {
           </div>
         ))}
       </div>
+      <CreatePostModal />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import useLoggedUser from "../../hooks/useLoggedUser";
 import useFollow from "../../hooks/useFollow";
 import useExplore from "../../hooks/useExplore";
 import axios from "axios";
+import CreatePostModal from "../modal/CreatePostModal";
 
 const UserContent = () => {
   const { loggedUser } = useLoggedUser();
@@ -24,7 +25,7 @@ const UserContent = () => {
   const getUserPost = () => {
     axios
       .get(
-        `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/users-post/${param.id}?size=10&page=1`,
+        `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/users-post/${param.id}?size=20&page=1`,
         { headers: config }
       )
       .then((res) => {
@@ -231,6 +232,7 @@ const UserContent = () => {
           </div>
         ))}
       </div>
+      <CreatePostModal />
     </div>
   );
 };
