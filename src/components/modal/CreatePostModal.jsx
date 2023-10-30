@@ -6,8 +6,8 @@ const CreatePostModal = () => {
     setCaption,
     handleCreatePost,
     imagePreview,
-    successMessage,
     handleImageChange,
+    selectedImage,
   } = useCreatePost();
   return (
     <>
@@ -37,41 +37,23 @@ const CreatePostModal = () => {
                 type="file"
                 name="image"
                 formEncType="multipart/form-data"
+                className="form-control mb-3"
                 onChange={handleImageChange}
-                // accepts="image/*"
               />
-              {/* <input
-                type="text"
-                className="form-control mb-2"
-                id="exampleFormControlInput6"
-                value={imgUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-                disabled
-              />
-              <button onClick={handleUpload} encType="multipart/form-data">
-                Upload
-              </button> */}
-              {!!successMessage.length && (
-                <p className="alert alert-success">{successMessage}</p>
-              )}
-              {/* <input
-            type="text"
-            className="form-control mb-2"
-            placeholder="https//yourimage.com/yourimage.jpg"
-            onChange={(e) => setImageUrl(e.target.value)}
-          /> */}
               <input
                 type="text"
-                className="form-control mb-2"
+                className="form-control mb-3"
                 placeholder="Your Caption"
                 onChange={(e) => setCaption(e.target.value)}
               />
-              <img
-                src={imagePreview}
-                className="img-fluid mb-2"
-                width={200}
-                height={200}
-              />
+              {selectedImage && (
+                <img
+                  src={imagePreview}
+                  className="img-fluid mb-2"
+                  width={400}
+                  height={400}
+                />
+              )}
               <button
                 onClick={handleCreatePost}
                 className="btn btn-success w-100"

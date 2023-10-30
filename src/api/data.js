@@ -30,12 +30,11 @@ export const loginData = (email, password) => {
     password: password,
   };
 
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/login",
-      payload,
-      { headers: headers }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/login",
+    payload,
+    { headers: headers }
+  );
 };
 
 export const registerData = (
@@ -61,121 +60,115 @@ export const registerData = (
     website: website,
   };
 
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/register",
-      payload,
-      { headers: headers }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/register",
+    payload,
+    { headers: headers }
+  );
 };
 
 export const exploreData = () => {
-  return axios
-    .get(
-      `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/explore-post?size=10&page=1`,
-      { headers: config }
-    )
+  return axios.get(
+    `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/explore-post?size=10&page=1`,
+    { headers: config }
+  );
 };
 
 export const followingPostData = () => {
-  return axios
-    .get(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/following-post?size=10&page=1",
-      { headers: config }
-    )
+  return axios.get(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/following-post?size=10&page=1",
+    { headers: config }
+  );
 };
 
 export const myFollowingData = () => {
-  return axios
-    .get(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/my-following?size=10&page=1",
-      { headers: config }
-    )
+  return axios.get(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/my-following?size=10&page=1",
+    { headers: config }
+  );
 };
 
 export const loggedUserData = () => {
-  return axios
-    .get("https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/user", {
+  return axios.get(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/user",
+    {
       headers: config,
-    })
+    }
+  );
 };
 
 export const likePostData = (postId) => {
   const payload = {
     postId: postId,
   };
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/like",
-      payload,
-      { headers: config }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/like",
+    payload,
+    { headers: config }
+  );
 };
 
 export const unlikePostData = (postId) => {
   const payload = {
     postId: postId,
   };
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unlike",
-      payload,
-      { headers: config }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unlike",
+    payload,
+    { headers: config }
+  );
 };
 
 export const followData = (userIdFollow) => {
   const payload = {
     userIdFollow: userIdFollow,
   };
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/follow",
-      payload,
-      { headers: config }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/follow",
+    payload,
+    { headers: config }
+  );
 };
 
 export const unfollowData = (userId) => {
-  return axios
-    .delete(
-      `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unfollow/${userId}`,
-      { headers: config }
-    )
+  return axios.delete(
+    `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/unfollow/${userId}`,
+    { headers: config }
+  );
 };
 
 export const uploadImageRegisterData = (formData) => {
   // const payload = {
   //   image: formData,
   // };
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
-      formData,
-      { headers: configRegister }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
+    formData,
+    { headers: configRegister }
+  );
 };
 
 export const uploadImageCreatePostData = (formData) => {
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
-      formData,
-      { headers: configCreatePost }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
+    formData,
+    { headers: configCreatePost }
+  );
 };
 
-export const createPostData = (imageUrl, caption) => {
-  const payload = {
-    imageUrl: imageUrl,
-    caption: caption,
-  };
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/create-post",
-      payload,
-      { headers: config }
-    )
+export const createPostData = (
+  payload
+  // imageUrl, caption
+) => {
+  // const payload = {
+  //   imageUrl: imageUrl,
+  //   caption: caption,
+  // };
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/create-post",
+    payload,
+    { headers: config }
+  );
 };
 
 export const updateProfileData = (
@@ -197,10 +190,9 @@ export const updateProfileData = (
     website: website,
   };
 
-  return axios
-    .post(
-      "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/update-profile",
-      payload,
-      { headers: config }
-    )
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/update-profile",
+    payload,
+    { headers: config }
+  );
 };

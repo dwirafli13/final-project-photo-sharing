@@ -2,8 +2,6 @@ import React from "react";
 import "./Content.css";
 import useExplore from "../../hooks/useExplore";
 import Navbar from "./Navbar";
-import useUploadImageCreatePost from "../../hooks/useUploadImageCreatePost";
-import useCreatePost from "../../hooks/useCreatePost";
 import CreatePostModal from "../modal/CreatePostModal";
 
 const Content = () => {
