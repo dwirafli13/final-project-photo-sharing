@@ -38,28 +38,17 @@ export const loginData = (email, password) => {
 };
 
 export const registerData = (
-  name,
-  username,
-  email,
-  password,
-  passwordRepeat,
-  imageUrl,
-  phoneNumber,
-  bio,
-  website
+  payload
+  // name,
+  // username,
+  // email,
+  // password,
+  // passwordRepeat,
+  // imageUrl,
+  // phoneNumber,
+  // bio,
+  // website
 ) => {
-  const payload = {
-    name: name,
-    username: username,
-    email: email,
-    password: password,
-    passwordRepeat: passwordRepeat,
-    profilePictureUrl: imageUrl,
-    phoneNumber: phoneNumber,
-    bio: bio,
-    website: website,
-  };
-
   return axios.post(
     "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/register",
     payload,
@@ -138,9 +127,6 @@ export const unfollowData = (userId) => {
 };
 
 export const uploadImageRegisterData = (formData) => {
-  // const payload = {
-  //   image: formData,
-  // };
   return axios.post(
     "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/upload-image",
     formData,
@@ -156,14 +142,7 @@ export const uploadImageCreatePostData = (formData) => {
   );
 };
 
-export const createPostData = (
-  payload
-  // imageUrl, caption
-) => {
-  // const payload = {
-  //   imageUrl: imageUrl,
-  //   caption: caption,
-  // };
+export const createPostData = (payload) => {
   return axios.post(
     "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/create-post",
     payload,

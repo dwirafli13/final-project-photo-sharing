@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useUploadImage from "../../hooks/useUploadImage";
 import useRegister from "../../hooks/useRegister";
 import "./Register.css";
 
 const Register = () => {
-  const { handleImageChange, handleUpload, imgUrl } = useUploadImage();
   const {
     setName,
     setUsername,
@@ -17,8 +15,8 @@ const Register = () => {
     setWebsite,
     errRegister,
     handleRegister,
-    setImageUrl,
-    imageUrl,
+    imagePreview,
+    handleImageChange,
   } = useRegister();
   return (
     <>
@@ -37,7 +35,6 @@ const Register = () => {
             <h1>Join Us and Share Your Best Moments With Us</h1>
             <p>Please Register</p>
             <div className="mb-3 form-size-regis">
-              {/* <form encType="multipart/form-data"> */}
               <label htmlFor="formFile" className="form-label">
                 Profile Picture
               </label>
@@ -46,56 +43,17 @@ const Register = () => {
                   className="form-control mb-2"
                   type="file"
                   id="formFile"
-                  // accepts="image/*"
                   onChange={handleImageChange}
                 />
-                <input
-                  type="text"
-                  className="form-control mb-2"
-                  id="exampleFormControlInput6"
-                  value={imgUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  disabled
-                />
-                <button
-                  className="btn btn-success"
-                  // htmlFor="#formFile"
-                  // encType="multipart/form-data"
-                  onClick={handleUpload}
-                >
-                  Upload Image
-                </button>
                 <div>
                   <img
-                    src={imgUrl}
+                    src={imagePreview}
                     className="img-fluid rounded-circle mt-2"
                     width={200}
                     height={200}
                   />
                 </div>
               </div>
-
-              {/* </form> */}
-              {/* <label htmlFor="exampleFormControlInput7" className="form-label">
-                Profile Picture URL
-              </label>
-              <div className="d-flex align-items-center flex-column">
-                <input
-                  type="text"
-                  className="form-control mb-2"
-                  id="exampleFormControlInput7"
-                  placeholder="https//yourimage.com/yourimage.jpg"
-                  onChange={(e) => setImageUrl(e.target.value)}
-                />
-                <div>
-                  <img
-                    src={imageUrl}
-                    className="img-fluid rounded-circle mt-2"
-                    width={200}
-                    height={200}
-                  />
-                </div>
-              </div> */}
               <hr />
               <label htmlFor="exampleFormControlInput1" className="form-label">
                 Name

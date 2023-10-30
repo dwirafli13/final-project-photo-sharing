@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { registerData } from "../api/data";
+import { registerData, uploadImageRegisterData } from "../api/data";
 
 const useRegister = () => {
   const [name, setName] = useState("");
@@ -12,23 +12,42 @@ const useRegister = () => {
   const [bio, setBio] = useState("");
   const [website, setWebsite] = useState("");
   const [errRegister, setErrRegister] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [selectedImage, setSelectedImage] = useState("");
+  const [imagePreview, setImagePreview] = useState(
+    "https://api-bootcamp.do.dibimbing.id/images/1684675691646-usericon.png"
+  );
   const navigate = useNavigate();
 
-  const handleRegister = () => {
-    registerData(
-      name,
-      username,
-      email,
-      password,
-      passwordRepeat,
-      imageUrl,
-      phoneNumber,
-      bio,
-      website
-    )
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleRegister = async () => {
+    const payload = {
+      name: name,
+      username: username,
+      email: email,
+      password: password,
+      passwordRepeat: passwordRepeat,
+      profilePictureUrl: "",
+      phoneNumber: phoneNumber,
+      bio: bio,
+      website: website,
+    };
+
+    let formData = new FormData();
+    formData.append("image", selectedImage);
+
+    await uploadImageRegisterData(formData)
       .then((res) => {
-        console.log(res);
+        payload.profilePictureUrl = res?.data?.url;
+      })
+      .catch((err) => console.log(err));
+
+    await registerData(payload)
+      .then((res) => {
+        alert(res?.data?.message);
         navigate("/");
       })
       .catch((err) => {
@@ -47,8 +66,8 @@ const useRegister = () => {
     setWebsite,
     errRegister,
     handleRegister,
-    setImageUrl,
-    imageUrl
+    imagePreview,
+    handleImageChange,
   };
 };
 
