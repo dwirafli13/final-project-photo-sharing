@@ -49,16 +49,16 @@ const MyProfileContent = () => {
         <div className="photo-profile-margin">
           <img
             src={loggedUser?.profilePictureUrl}
-            className="rounded-circle img-fluid"
-            height={200}
-            width={200}
+            className="rounded-circle"
+            height={100}
+            width={100}
           />
         </div>
         <div className="w-100">
           <p>
             <strong>{loggedUser?.username}</strong>
           </p>
-          <div className="d-flex gap-5 mt-3">
+          <div className="d-flex gap-lg-5 gap-3 mt-3">
             <span className="text-center">
               <p className="mb-0">
                 <strong>{totalPost}</strong>
@@ -95,7 +95,7 @@ const MyProfileContent = () => {
         {myProfilePost.map((item, key) => (
           <div key={key} className="col-4 px-1 py-1">
             {/* Modal Button Trigger */}
-            <div className="image-responsive">
+            <div className="image-responsive-my-profile-content">
               <button
                 className="btn card-text p-0 ms-2"
                 data-bs-toggle="modal"

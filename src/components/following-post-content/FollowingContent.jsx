@@ -3,6 +3,7 @@ import useFollowingPost from "../../hooks/useFollowingPost";
 import useExplore from "../../hooks/useExplore";
 import Navbar from "../content/Navbar";
 import CreatePostModal from "../modal/CreatePostModal";
+import "./FollowingContent.css";
 
 const FollowingContent = () => {
   const { followingPost } = useFollowingPost();
@@ -10,7 +11,7 @@ const FollowingContent = () => {
 
   return (
     <div
-      className="content mt-5"
+      className="content mt-5 mb-5"
       id="nav-following"
       role="tabpanel"
       aria-labelledby="nav-following-tab"
@@ -32,7 +33,9 @@ const FollowingContent = () => {
               <p className="ms-2 card-text">{item?.user?.username}</p>
             </button>
           </div>
-          <img src={item?.imageUrl} className="card-img-top" />
+          <div className="image-responsive-fol-content">
+            <img src={item?.imageUrl} width={400} height={400} />
+          </div>
           <div className="card-body">
             <div className="btn-group">
               {isLike ? (
@@ -99,10 +102,9 @@ const FollowingContent = () => {
                     </div>
                     <div className="modal-body">
                       <div className="card">
-                        <img
-                          src={item?.imageUrl}
-                          className="card-img-top img-fluid"
-                        />
+                        <div className="modal-image-fol-content">
+                          <img src={item?.imageUrl} className="img-fluid" />
+                        </div>
                         <div className="card-body">
                           <div className="btn-group">
                             {isLike ? (

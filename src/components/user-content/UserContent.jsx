@@ -6,6 +6,7 @@ import useExplore from "../../hooks/useExplore";
 import axios from "axios";
 import CreatePostModal from "../modal/CreatePostModal";
 import useDeletePost from "../../hooks/useDeletePost";
+import "./UserContent.css";
 
 const UserContent = () => {
   const { loggedUser } = useLoggedUser();
@@ -65,16 +66,16 @@ const UserContent = () => {
   return (
     <div className="my-profile-content mt-3">
       <div className="mb-3 d-flex align-items-center">
-        <div className="photo-profile-margin">
+        <div className="photo-profile-margin-user-content">
           <img
             src={userById?.profilePictureUrl}
-            className="rounded-circle img-fluid"
-            height={200}
-            width={200}
+            className="rounded-circle"
+            height={100}
+            width={100}
           />
         </div>
         <div className="w-100">
-          <div className="d-flex gap-5 align-items-center">
+          <div className="d-flex gap-lg-5 gap-3 align-items-center">
             <p>
               <strong>{userById?.username}</strong>
             </p>
@@ -102,7 +103,7 @@ const UserContent = () => {
               ) : null}
             </p>
           </div>
-          <div className="d-flex gap-5 mt-3">
+          <div className="d-flex gap-lg-5 gap-3 mt-3">
             <span className="text-center">
               <p className="mb-0">
                 <strong>{totalPost}</strong>
@@ -139,13 +140,13 @@ const UserContent = () => {
         {userPost.map((item, key) => (
           <div key={key} className="col-4 px-1 py-1">
             {/* Modal Button Trigger */}
-            <div className="image-responsive">
+            <div className="image-responsive-user-content">
               <button
                 className="btn card-text p-0 ms-2"
                 data-bs-toggle="modal"
                 data-bs-target={`#postModal${item?.id}`}
               >
-                <img src={item.imageUrl} width={200} height={200} />
+                <img src={item.imageUrl} />
               </button>
             </div>
             {/* Modal Button Trigger */}
@@ -189,10 +190,9 @@ const UserContent = () => {
                   </div>
                   <div className="modal-body">
                     <div className="card">
-                      <img
-                        src={item?.imageUrl}
-                        className="card-img-top img-fluid"
-                      />
+                      <div className="modal-image-user-content">
+                        <img src={item?.imageUrl} className="img-fluid" />
+                      </div>
                       <div className="card-body">
                         <div className="d-flex align-items-center justify-content-between">
                           <div className="btn-group">

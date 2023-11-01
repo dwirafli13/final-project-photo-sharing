@@ -10,7 +10,7 @@ const Content = () => {
 
   return (
     <div
-      className="content mt-5"
+      className="content mt-5 mb-5"
       id="nav-explore"
       role="tabpanel"
       aria-labelledby="nav-explore-tab"
@@ -32,13 +32,8 @@ const Content = () => {
               <p className="ms-2 card-text">{item?.user?.username}</p>
             </button>
           </div>
-          <div className="image-responsive">
-            <img
-              src={item?.imageUrl}
-              className="card-img-top"
-              width={400}
-              height={400}
-            />
+          <div className="image-responsive-content">
+            <img src={item?.imageUrl} width={400} height={400}/>
           </div>
           <div className="card-body">
             <div className="btn-group">
@@ -106,10 +101,9 @@ const Content = () => {
                     </div>
                     <div className="modal-body">
                       <div className="card">
-                        <img
-                          src={item?.imageUrl}
-                          className="card-img-top img-fluid"
-                        />
+                        <div className="modal-image-content">
+                          <img src={item?.imageUrl} className="img-fluid" />
+                        </div>
                         <div className="card-body">
                           <div className="btn-group">
                             {isLike ? (
