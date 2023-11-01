@@ -175,3 +175,10 @@ export const updateProfileData = (
     { headers: config }
   );
 };
+
+export const deletePostData = (postId) => {
+  return axios.delete(
+    `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/delete-post/${postId}`,
+    { headers: config }
+  );
+}

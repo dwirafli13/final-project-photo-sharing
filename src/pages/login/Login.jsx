@@ -60,7 +60,7 @@ const Login = () => {
               >
                 Login
               </button>
-              <p>
+              <p className="mb-5">
                 Don't have an account?
                 <Link to={"/register"} className="text-decoration-none">
                   {" "}

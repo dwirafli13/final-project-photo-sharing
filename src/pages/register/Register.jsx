@@ -148,7 +148,7 @@ const Register = () => {
               >
                 Register
               </button>
-              <p>
+              <p className="mb-5">
                 Already have an account?
                 <Link to={"/"} className="text-decoration-none">
                   {" "}

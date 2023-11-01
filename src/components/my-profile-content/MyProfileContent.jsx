@@ -5,10 +5,13 @@ import "./MyProfileContent.css";
 import useLoggedUser from "../../hooks/useLoggedUser";
 import useExplore from "../../hooks/useExplore";
 import CreatePostModal from "../modal/CreatePostModal";
+import PostModal from "../modal/PostModal";
+import useDeletePost from "../../hooks/useDeletePost";
 
 const MyProfileContent = () => {
   const { loggedUser } = useLoggedUser();
   const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
+  const { handleDeletePost } = useDeletePost();
   const [myProfilePost, setMyProfilePost] = useState([]);
   const [totalPost, setTotalPost] = useState("");
   const param = useParams();
@@ -147,25 +150,37 @@ const MyProfileContent = () => {
                         className="card-img-top img-fluid"
                       />
                       <div className="card-body">
-                        <div className="btn-group">
-                          {isLike ? (
-                            <button
-                              className="btn card-text p-0"
-                              onClick={() => handleUnlikePost(item?.id)}
-                            >
-                              Unlike
+                        <div className="d-flex align-items-center justify-content-between">
+                          <div className="btn-group">
+                            {isLike ? (
+                              <button
+                                className="btn card-text p-0"
+                                onClick={() => handleUnlikePost(item?.id)}
+                              >
+                                Unlike
+                              </button>
+                            ) : (
+                              <button
+                                className="btn card-text p-0"
+                                onClick={() => handleLikePost(item?.id)}
+                              >
+                                Like
+                              </button>
+                            )}
+                            <button className="btn card-text p-0 ms-2">
+                              Comment
                             </button>
-                          ) : (
-                            <button
-                              className="btn card-text p-0"
-                              onClick={() => handleLikePost(item?.id)}
-                            >
-                              Like
-                            </button>
-                          )}
-                          <button className="btn card-text p-0 ms-2">
-                            Comment
-                          </button>
+                          </div>
+                          <div>
+                            {loggedUser?.id ? (
+                              <button
+                                className="btn btn-danger"
+                                onClick={() => handleDeletePost(item?.id)}
+                              >
+                                Delete Post
+                              </button>
+                            ) : null}
+                          </div>
                         </div>
                         <p className="card-text">{item?.totalLikes} Likes</p>
                         <p className="card-text">
@@ -188,6 +203,7 @@ const MyProfileContent = () => {
         ))}
       </div>
       <CreatePostModal />
+      {/* <PostModal /> */}
     </div>
   );
 };

@@ -5,11 +5,13 @@ import useFollow from "../../hooks/useFollow";
 import useExplore from "../../hooks/useExplore";
 import axios from "axios";
 import CreatePostModal from "../modal/CreatePostModal";
+import useDeletePost from "../../hooks/useDeletePost";
 
 const UserContent = () => {
   const { loggedUser } = useLoggedUser();
   const { isFollow, handleFollow, handleUnfollow } = useFollow();
   const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
+  const { handleDeletePost } = useDeletePost();
   const [userPost, setUserPost] = useState([]);
   const [userById, setUserById] = useState({});
   const [totalPost, setTotalPost] = useState("");
@@ -192,25 +194,37 @@ const UserContent = () => {
                         className="card-img-top img-fluid"
                       />
                       <div className="card-body">
-                        <div className="btn-group">
-                          {isLike ? (
-                            <button
-                              className="btn card-text p-0"
-                              onClick={() => handleUnlikePost(item?.id)}
-                            >
-                              Unlike
+                        <div className="d-flex align-items-center justify-content-between">
+                          <div className="btn-group">
+                            {isLike ? (
+                              <button
+                                className="btn card-text p-0"
+                                onClick={() => handleUnlikePost(item?.id)}
+                              >
+                                Unlike
+                              </button>
+                            ) : (
+                              <button
+                                className="btn card-text p-0"
+                                onClick={() => handleLikePost(item?.id)}
+                              >
+                                Like
+                              </button>
+                            )}
+                            <button className="btn card-text p-0 ms-2">
+                              Comment
                             </button>
-                          ) : (
-                            <button
-                              className="btn card-text p-0"
-                              onClick={() => handleLikePost(item?.id)}
-                            >
-                              Like
-                            </button>
-                          )}
-                          <button className="btn card-text p-0 ms-2">
-                            Comment
-                          </button>
+                          </div>
+                          <div>
+                            {loggedUser?.id === userById?.id ? (
+                              <button
+                                className="btn btn-danger"
+                                onClick={() => handleDeletePost(item?.id)}
+                              >
+                                Delete Post
+                              </button>
+                            ) : null}
+                          </div>
                         </div>
                         <p className="card-text">{item?.totalLikes} Likes</p>
                         <p className="card-text">
