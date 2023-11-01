@@ -145,8 +145,14 @@ const FollowingContent = () => {
               {/* Modal Content */}
             </div>
             <p className="card-text">{item?.totalLikes} Likes</p>
-            <p className="card-text">
-              <strong>{item?.user?.username}</strong> {item?.caption}
+            <p className="card-text d-flex align-items-center gap-2">
+              <button
+                className="btn p-0"
+                onClick={() => handleUser(item?.userId)}
+              >
+                <strong>{item?.user?.username}</strong>
+              </button>{" "}
+              {item?.caption}
             </p>
           </div>
         </div>

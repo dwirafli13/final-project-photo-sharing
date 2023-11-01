@@ -145,7 +145,7 @@ const Content = () => {
             </div>
 
             <p className="card-text">{item?.totalLikes} Likes</p>
-            <p className="card-text">
+            <p className="card-text d-flex align-items-center gap-2">
               <button
                 className="btn p-0"
                 onClick={() => handleUser(item?.userId)}
