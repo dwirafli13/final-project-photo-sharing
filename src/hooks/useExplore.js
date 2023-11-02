@@ -8,10 +8,12 @@ const useExplore = () => {
 
   const handleUser = (id) => {
     navigate(`/user/${id}`);
+    window.location.reload();
   };
 
   const handleMyProfile = (id) => {
     navigate(`/my-profile/${id}`);
+    window.location.reload();
   };
 
   const handleLikePost = (postId) => {

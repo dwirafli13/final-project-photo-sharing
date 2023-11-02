@@ -13,6 +13,7 @@ const useLogin = () => {
       .then((res) => {
         localStorage.setItem("token", res?.data?.token);
         navigate("/home");
+        window.location.reload();
       })
       .catch((err) => {
         setErrLogin(err?.response?.data?.message);

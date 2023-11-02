@@ -181,4 +181,18 @@ export const deletePostData = (postId) => {
     `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/delete-post/${postId}`,
     { headers: config }
   );
-}
+};
+
+export const getFollowersData = (id) => {
+  return axios.get(
+    `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/followers/${id}?size=20&page=1`,
+    { headers: config }
+  );
+};
+
+export const getFollowingData = (id) => {
+  return axios.get(
+    `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/following/${id}?size=20&page=1`,
+    { headers: config }
+  );
+};

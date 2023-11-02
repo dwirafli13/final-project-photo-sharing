@@ -7,6 +7,7 @@ import useLoggedUser from "../../hooks/useLoggedUser";
 import useExplore from "../../hooks/useExplore";
 import CreatePostModal from "../modal/CreatePostModal";
 import useDeletePost from "../../hooks/useDeletePost";
+import FollowModal from "../modal/FollowModal";
 
 const MyProfileContent = () => {
   const { loggedUser } = useLoggedUser();
@@ -95,18 +96,30 @@ const MyProfileContent = () => {
               </p>
               <p>Post</p>
             </span>
-            <span className="text-center">
-              <p className="mb-0">
-                <strong>{loggedUser?.totalFollowers}</strong>
-              </p>
-              <p>Followers</p>
-            </span>
-            <span className="text-center">
-              <p className="mb-0">
-                <strong>{loggedUser?.totalFollowing}</strong>
-              </p>
-              <p>Following</p>
-            </span>
+            <button
+              className="btn p-0"
+              data-bs-toggle="modal"
+              data-bs-target="#followersModal"
+            >
+              <span className="text-center">
+                <p className="mb-0">
+                  <strong>{loggedUser?.totalFollowers}</strong>
+                </p>
+                <p>Followers</p>
+              </span>
+            </button>
+            <button
+              className="btn p-0"
+              data-bs-toggle="modal"
+              data-bs-target="#followingModal"
+            >
+              <span className="text-center">
+                <p className="mb-0">
+                  <strong>{loggedUser?.totalFollowing}</strong>
+                </p>
+                <p>Following</p>
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -232,7 +245,7 @@ const MyProfileContent = () => {
         ))}
       </div>
       <CreatePostModal />
-      {/* <PostModal /> */}
+      <FollowModal id={param.id} />
     </div>
   );
 };

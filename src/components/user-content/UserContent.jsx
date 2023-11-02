@@ -7,6 +7,7 @@ import useExplore from "../../hooks/useExplore";
 import axios from "axios";
 import CreatePostModal from "../modal/CreatePostModal";
 import useDeletePost from "../../hooks/useDeletePost";
+import FollowModal from "../modal/FollowModal";
 import "./UserContent.css";
 
 const UserContent = () => {
@@ -141,18 +142,30 @@ const UserContent = () => {
               </p>
               <p>Post</p>
             </span>
-            <span className="text-center">
-              <p className="mb-0">
-                <strong>{userById?.totalFollowers}</strong>
-              </p>
-              <p>Followers</p>
-            </span>
-            <span className="text-center">
-              <p className="mb-0">
-                <strong>{userById?.totalFollowing}</strong>
-              </p>
-              <p>Following</p>
-            </span>
+            <button
+              className="btn p-0"
+              data-bs-toggle="modal"
+              data-bs-target="#followersModal"
+            >
+              <span className="text-center">
+                <p className="mb-0">
+                  <strong>{userById?.totalFollowers}</strong>
+                </p>
+                <p>Followers</p>
+              </span>
+            </button>
+            <button
+              className="btn p-0"
+              data-bs-toggle="modal"
+              data-bs-target="#followingModal"
+            >
+              <span className="text-center">
+                <p className="mb-0">
+                  <strong>{userById?.totalFollowing}</strong>
+                </p>
+                <p>Following</p>
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -278,6 +291,7 @@ const UserContent = () => {
         ))}
       </div>
       <CreatePostModal />
+      <FollowModal id={param.id} />
     </div>
   );
 };
