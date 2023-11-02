@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { likePostData, unlikePostData } from "../../api/data";
 import { useParams } from "react-router";
 import useLoggedUser from "../../hooks/useLoggedUser";
 import useFollow from "../../hooks/useFollow";
@@ -11,7 +12,7 @@ import "./UserContent.css";
 const UserContent = () => {
   const { loggedUser } = useLoggedUser();
   const { isFollow, handleFollow, handleUnfollow } = useFollow();
-  const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
+  const { handleUser } = useExplore();
   const { handleDeletePost } = useDeletePost();
   const [userPost, setUserPost] = useState([]);
   const [userById, setUserById] = useState({});
@@ -23,6 +24,36 @@ const UserContent = () => {
     Authorization: `Bearer ${token}`,
     apiKey: apiKey,
     "Content-Type": "application/json",
+  };
+
+  const handleLikePost = (postId) => {
+    likePostData(postId)
+      .then((res) => {
+        console.log(res);
+        setUserPost((userPost) =>
+          userPost.map((item) =>
+            item?.id === postId
+              ? { ...item, isLike: true, totalLikes: item?.totalLikes + 1 }
+              : item
+          )
+        );
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleUnlikePost = (postId) => {
+    unlikePostData(postId)
+      .then((res) => {
+        console.log(res);
+        setUserPost((userPost) =>
+          userPost.map((item) =>
+            item?.id === postId
+              ? { ...item, isLike: false, totalLikes: item?.totalLikes - 1 }
+              : item
+          )
+        );
+      })
+      .catch((err) => console.log(err));
   };
 
   const getUserPost = () => {
@@ -196,7 +227,7 @@ const UserContent = () => {
                       <div className="card-body">
                         <div className="d-flex align-items-center justify-content-between">
                           <div className="btn-group">
-                            {isLike ? (
+                            {item?.isLike ? (
                               <button
                                 className="btn card-text p-0"
                                 onClick={() => handleUnlikePost(item?.id)}

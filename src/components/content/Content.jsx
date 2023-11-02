@@ -33,11 +33,11 @@ const Content = () => {
             </button>
           </div>
           <div className="image-responsive-content">
-            <img src={item?.imageUrl} width={400} height={400}/>
+            <img src={item?.imageUrl} width={400} height={400} />
           </div>
           <div className="card-body">
             <div className="btn-group">
-              {isLike ? (
+              {item?.isLike ? (
                 <button
                   className="btn card-text p-0"
                   onClick={() => handleUnlikePost(item?.id)}
@@ -106,7 +106,7 @@ const Content = () => {
                         </div>
                         <div className="card-body">
                           <div className="btn-group">
-                            {isLike ? (
+                            {item?.isLike ? (
                               <button
                                 className="btn card-text p-0"
                                 onClick={() => handleUnlikePost(item?.id)}

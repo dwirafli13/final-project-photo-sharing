@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { likePostData, unlikePostData } from "../../api/data";
 import axios from "axios";
 import "./MyProfileContent.css";
 import useLoggedUser from "../../hooks/useLoggedUser";
 import useExplore from "../../hooks/useExplore";
 import CreatePostModal from "../modal/CreatePostModal";
-import PostModal from "../modal/PostModal";
 import useDeletePost from "../../hooks/useDeletePost";
 
 const MyProfileContent = () => {
   const { loggedUser } = useLoggedUser();
-  const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
+  const { handleUser } = useExplore();
   const { handleDeletePost } = useDeletePost();
   const [myProfilePost, setMyProfilePost] = useState([]);
   const [totalPost, setTotalPost] = useState("");
@@ -21,6 +21,36 @@ const MyProfileContent = () => {
     Authorization: `Bearer ${token}`,
     apiKey: apiKey,
     "Content-Type": "application/json",
+  };
+
+  const handleLikePost = (postId) => {
+    likePostData(postId)
+      .then((res) => {
+        console.log(res);
+        setMyProfilePost((myProfilePost) =>
+          myProfilePost.map((item) =>
+            item?.id === postId
+              ? { ...item, isLike: true, totalLikes: item?.totalLikes + 1 }
+              : item
+          )
+        );
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleUnlikePost = (postId) => {
+    unlikePostData(postId)
+      .then((res) => {
+        console.log(res);
+        setMyProfilePost((myProfilePost) =>
+          myProfilePost.map((item) =>
+            item?.id === postId
+              ? { ...item, isLike: false, totalLikes: item?.totalLikes - 1 }
+              : item
+          )
+        );
+      })
+      .catch((err) => console.log(err));
   };
 
   const getMyProfilePost = () => {
@@ -46,7 +76,7 @@ const MyProfileContent = () => {
   return (
     <div className="my-profile-content mt-3">
       <div className="mb-3 d-flex align-items-center">
-        <div className="photo-profile-margin">
+        <div className="photo-profile-margin-my-profile">
           <img
             src={loggedUser?.profilePictureUrl}
             className="rounded-circle"
@@ -145,14 +175,13 @@ const MyProfileContent = () => {
                   </div>
                   <div className="modal-body">
                     <div className="card">
-                      <img
-                        src={item?.imageUrl}
-                        className="card-img-top img-fluid"
-                      />
+                      <div className="modal-image-my-profile">
+                        <img src={item?.imageUrl} className="img-fluid" />
+                      </div>
                       <div className="card-body">
                         <div className="d-flex align-items-center justify-content-between">
                           <div className="btn-group">
-                            {isLike ? (
+                            {item?.isLike ? (
                               <button
                                 className="btn card-text p-0"
                                 onClick={() => handleUnlikePost(item?.id)}

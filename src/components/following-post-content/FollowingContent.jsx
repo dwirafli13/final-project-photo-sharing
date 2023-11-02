@@ -6,8 +6,9 @@ import CreatePostModal from "../modal/CreatePostModal";
 import "./FollowingContent.css";
 
 const FollowingContent = () => {
-  const { followingPost } = useFollowingPost();
-  const { handleUser, isLike, handleLikePost, handleUnlikePost } = useExplore();
+  const { followingPost, handleLikePost, handleUnlikePost } =
+    useFollowingPost();
+  const { handleUser } = useExplore();
 
   return (
     <div
@@ -38,9 +39,9 @@ const FollowingContent = () => {
           </div>
           <div className="card-body">
             <div className="btn-group">
-              {isLike ? (
+              {item?.isLike ? (
                 <button
-                  className="btn card-text"
+                  className="btn card-text p-0"
                   onClick={() => handleUnlikePost(item?.id)}
                 >
                   Unlike
@@ -107,7 +108,7 @@ const FollowingContent = () => {
                         </div>
                         <div className="card-body">
                           <div className="btn-group">
-                            {isLike ? (
+                            {item?.isLike ? (
                               <button
                                 className="btn card-text p-0"
                                 onClick={() => handleUnlikePost(item?.id)}

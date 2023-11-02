@@ -4,8 +4,6 @@ import { useNavigate } from "react-router";
 
 const useExplore = () => {
   const [explore, setExplore] = useState([]);
-  const [isLike, setIsLike] = useState(explore?.isLike);
-  const [totalLikes, setTotalLikes] = useState(explore?.totalLikes);
   const navigate = useNavigate();
 
   const handleUser = (id) => {
@@ -19,9 +17,14 @@ const useExplore = () => {
   const handleLikePost = (postId) => {
     likePostData(postId)
       .then((res) => {
-        setTotalLikes(totalLikes + 1);
-        setIsLike(true);
         console.log(res);
+        setExplore((explore) =>
+          explore.map((item) =>
+            item?.id === postId
+              ? { ...item, isLike: true, totalLikes: item?.totalLikes + 1 }
+              : item
+          )
+        );
       })
       .catch((err) => console.log(err));
   };
@@ -29,9 +32,14 @@ const useExplore = () => {
   const handleUnlikePost = (postId) => {
     unlikePostData(postId)
       .then((res) => {
-        setTotalLikes(totalLikes - 1);
-        setIsLike(false);
         console.log(res);
+        setExplore((explore) =>
+          explore.map((item) =>
+            item?.id === postId
+              ? { ...item, isLike: false, totalLikes: item?.totalLikes - 1 }
+              : item
+          )
+        );
       })
       .catch((err) => console.log(err));
   };
@@ -55,7 +63,6 @@ const useExplore = () => {
     explore,
     handleUser,
     handleMyProfile,
-    isLike,
     handleLikePost,
     handleUnlikePost,
   };
