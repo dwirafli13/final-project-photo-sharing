@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import Sidebar from "../../components/sidebar/Sidebar";
-import BottomNavbar from "../../components/bottom-navbar/BottomNavbar";
-import useLoggedUser from "../../hooks/useLoggedUser";
-import useUpdateProfile from "../../hooks/useUpdateProfile";
+import Sidebar from "../components/sidebar/Sidebar";
+import BottomNavbar from "../components/bottom-navbar/BottomNavbar";
+import useLoggedUser from "../hooks/useLoggedUser";
+import useUpdateProfile from "../hooks/useUpdateProfile";
 import "./EditProfile.css";
 
 const EditProfile = () => {

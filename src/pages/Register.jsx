@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useRegister from "../../hooks/useRegister";
+import useRegister from "../hooks/useRegister";
 import "./Register.css";
 
 const Register = () => {
