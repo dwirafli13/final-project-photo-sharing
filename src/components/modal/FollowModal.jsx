@@ -10,7 +10,6 @@ const FollowModal = ({ id }) => {
   const getFollowers = () => {
     getFollowersData(id)
       .then((res) => {
-        console.log(res);
         setFollowers(res?.data?.data?.users);
       })
       .catch((err) => console.log(err));
@@ -19,7 +18,6 @@ const FollowModal = ({ id }) => {
   const getFollowing = () => {
     getFollowingData(id)
       .then((res) => {
-        console.log(res);
         setFollowing(res?.data?.data?.users);
       })
       .catch((err) => console.log(err));

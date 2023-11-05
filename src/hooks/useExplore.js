@@ -19,7 +19,6 @@ const useExplore = () => {
   const handleLikePost = (postId) => {
     likePostData(postId)
       .then((res) => {
-        console.log(res);
         setExplore((explore) =>
           explore.map((item) =>
             item?.id === postId
@@ -34,7 +33,6 @@ const useExplore = () => {
   const handleUnlikePost = (postId) => {
     unlikePostData(postId)
       .then((res) => {
-        console.log(res);
         setExplore((explore) =>
           explore.map((item) =>
             item?.id === postId

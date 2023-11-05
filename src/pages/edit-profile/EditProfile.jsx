@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import BottomNavbar from "../../components/bottom-navbar/BottomNavbar";
 import useLoggedUser from "../../hooks/useLoggedUser";
@@ -11,18 +11,19 @@ const EditProfile = () => {
     setName,
     setUsername,
     setEmail,
-    setProfilePictureUrl,
     setPhoneNumber,
     setBio,
     setWebsite,
     handleUpdateProfile,
+    imagePreview,
+    handleImageChange,
   } = useUpdateProfile();
   return (
     <div className="container">
       <div className="content-edit-profile form-margin-edit-profile">
         <div className="mb-3 d-flex flex-column align-items-center">
           <img
-            src={loggedUser?.profilePictureUrl}
+            src={imagePreview}
             className="img-fluid rounded-circle"
             width={200}
             height={200}
@@ -31,11 +32,11 @@ const EditProfile = () => {
             Profile Picture URL
           </label>
           <input
-            className="form-control"
-            type="text"
-            defaultValue={loggedUser?.profilePictureUrl}
-            placeholder="Enter Profile Picture Url"
-            onChange={(e) => setProfilePictureUrl(e.target.value)}
+            type="file"
+            name="image"
+            formEncType="multipart/form-data"
+            className="form-control mb-3"
+            onChange={handleImageChange}
           />
         </div>
         <div className="mb-3">

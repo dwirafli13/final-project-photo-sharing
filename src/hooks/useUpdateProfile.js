@@ -1,25 +1,46 @@
 import { useState } from "react";
-import { updateProfileData } from "../api/data";
+import { updateProfileData, uploadImageCreatePostData } from "../api/data";
+import useLoggedUser from "./useLoggedUser";
 
 const useUpdateProfile = () => {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [profilePictureUrl, setProfilePictureUrl] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [bio, setBio] = useState("");
-  const [website, setWebsite] = useState("");
+  const { loggedUser } = useLoggedUser();
+  const [name, setName] = useState(loggedUser?.name);
+  const [username, setUsername] = useState(loggedUser?.username);
+  const [email, setEmail] = useState(loggedUser.email);
+  const [phoneNumber, setPhoneNumber] = useState(loggedUser?.phoneNumber);
+  const [bio, setBio] = useState(loggedUser?.bio);
+  const [website, setWebsite] = useState(loggedUser?.website);
+  const [selectedImage, setSelectedImage] = useState("");
+  const [imagePreview, setImagePreview] = useState(
+    loggedUser?.profilePictureUrl
+  );
 
-  const handleUpdateProfile = () => {
-    updateProfileData(
-      name,
-      username,
-      email,
-      profilePictureUrl,
-      phoneNumber,
-      bio,
-      website
-    )
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleUpdateProfile = async () => {
+    const payload = {
+      name: name,
+      username: username,
+      email: email,
+      profilePictureUrl: "",
+      phoneNumber: phoneNumber,
+      bio: bio,
+      website: website,
+    };
+
+    let formData = new FormData();
+    formData.append("image", selectedImage);
+
+    await uploadImageCreatePostData(formData)
+      .then((res) => {
+        payload.profilePictureUrl = res?.data?.url;
+      })
+      .catch((err) => console.log(err));
+
+    await updateProfileData(payload)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -28,11 +49,12 @@ const useUpdateProfile = () => {
     setName,
     setUsername,
     setEmail,
-    setProfilePictureUrl,
     setPhoneNumber,
     setBio,
     setWebsite,
     handleUpdateProfile,
+    imagePreview,
+    handleImageChange,
   };
 };
 

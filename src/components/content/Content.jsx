@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Content.css";
 import useExplore from "../../hooks/useExplore";
 import Navbar from "./Navbar";
 import CreatePostModal from "../modal/CreatePostModal";
+import useCreateComment from "../../hooks/useCreateComment";
+import PostModal from "../modal/PostModal";
 
 const Content = () => {
-  const { explore, handleUser, isLike, handleLikePost, handleUnlikePost } =
+  const { explore, handleUser, handleLikePost, handleUnlikePost } =
     useExplore();
+  const { setComment, handleComment, comment } = useCreateComment();
 
+  // useEffect(() => {}, []);
   return (
     <div
       className="content mt-5 mb-5"
@@ -42,28 +46,40 @@ const Content = () => {
                   className="btn card-text p-0"
                   onClick={() => handleUnlikePost(item?.id)}
                 >
-                  Unlike
+                  <h3>
+                    <i className="bi bi-heart-fill"></i>
+                  </h3>
                 </button>
               ) : (
                 <button
                   className="btn card-text p-0"
                   onClick={() => handleLikePost(item?.id)}
                 >
-                  Like
+                  <h3>
+                    <i className="bi bi-heart"></i>
+                  </h3>
                 </button>
               )}
               {/* Modal Button Trigger */}
               <button
-                className="btn card-text p-0 ms-2"
+                className="btn card-text p-0 ms-3"
                 data-bs-toggle="modal"
                 data-bs-target={`#postModal${item?.id}`}
               >
-                Comment
+                <h3>
+                  <i className="bi bi-chat-dots"></i>
+                </h3>
               </button>
               {/* Modal Button Trigger */}
 
+              <PostModal
+                postId={item?.id}
+                isLike={item?.isLike}
+                totalLikes={item?.totalLikes}
+              />
+
               {/* Modal Content */}
-              <div
+              {/* <div
                 className="modal fade"
                 id={`postModal${item?.id}`}
                 data-bs-backdrop="static"
@@ -111,18 +127,24 @@ const Content = () => {
                                 className="btn card-text p-0"
                                 onClick={() => handleUnlikePost(item?.id)}
                               >
-                                Unlike
+                                <h3>
+                                  <i className="bi bi-heart-fill"></i>
+                                </h3>
                               </button>
                             ) : (
                               <button
                                 className="btn card-text p-0"
                                 onClick={() => handleLikePost(item?.id)}
                               >
-                                Like
+                                <h3>
+                                  <i className="bi bi-heart"></i>
+                                </h3>
                               </button>
                             )}
-                            <button className="btn card-text p-0 ms-2">
-                              Comment
+                            <button className="btn card-text p-0 ms-3">
+                              <h3>
+                                <i className="bi bi-chat-dots"></i>
+                              </h3>
                             </button>
                           </div>
                           <p className="card-text">{item?.totalLikes} Likes</p>
@@ -135,17 +157,27 @@ const Content = () => {
                             </button>{" "}
                             {item?.caption}
                           </p>
+                          <p className="card-text">
+                            <input
+                              type="text"
+                              placeholder="Add a comment..."
+                              onChange={(e) => setComment(e.target.value)}
+                            />
+                            <button onClick={() => handleComment(item?.id)}>
+                              Post
+                            </button>
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* Modal Content */}
             </div>
 
             <p className="card-text">{item?.totalLikes} Likes</p>
-            <p className="card-text d-flex align-items-center gap-2">
+            <p className="card-text d-flex gap-2">
               <button
                 className="btn p-0"
                 onClick={() => handleUser(item?.userId)}

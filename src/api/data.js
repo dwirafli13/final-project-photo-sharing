@@ -37,18 +37,7 @@ export const loginData = (email, password) => {
   );
 };
 
-export const registerData = (
-  payload
-  // name,
-  // username,
-  // email,
-  // password,
-  // passwordRepeat,
-  // imageUrl,
-  // phoneNumber,
-  // bio,
-  // website
-) => {
+export const registerData = (payload) => {
   return axios.post(
     "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/register",
     payload,
@@ -151,24 +140,15 @@ export const createPostData = (payload) => {
 };
 
 export const updateProfileData = (
-  name,
-  username,
-  email,
-  profilePictureUrl,
-  phoneNumber,
-  bio,
-  website
+  // name,
+  // username,
+  // email,
+  // profilePictureUrl,
+  // phoneNumber,
+  // bio,
+  // website
+  payload
 ) => {
-  const payload = {
-    name: name,
-    username: username,
-    email: email,
-    profilePictureUrl: profilePictureUrl,
-    phoneNumber: phoneNumber,
-    bio: bio,
-    website: website,
-  };
-
   return axios.post(
     "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/update-profile",
     payload,
@@ -193,6 +173,21 @@ export const getFollowersData = (id) => {
 export const getFollowingData = (id) => {
   return axios.get(
     `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/following/${id}?size=20&page=1`,
+    { headers: config }
+  );
+};
+
+export const getCreateComment = (payload) => {
+  return axios.post(
+    "https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/create-comment",
+    payload,
+    { headers: config }
+  );
+};
+
+export const postByIdData = (postId) => {
+  return axios.get(
+    `https://photo-sharing-api-bootcamp.do.dibimbing.id/api/v1/post/${postId}`,
     { headers: config }
   );
 };

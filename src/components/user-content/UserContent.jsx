@@ -9,6 +9,7 @@ import CreatePostModal from "../modal/CreatePostModal";
 import useDeletePost from "../../hooks/useDeletePost";
 import FollowModal from "../modal/FollowModal";
 import "./UserContent.css";
+import PostModal from "../modal/PostModal";
 
 const UserContent = () => {
   const { loggedUser } = useLoggedUser();
@@ -195,8 +196,14 @@ const UserContent = () => {
             </div>
             {/* Modal Button Trigger */}
 
+            <PostModal
+              postId={item?.id}
+              isLike={item?.isLike}
+              totalLikes={item?.totalLikes}
+            />
+
             {/* Modal Content */}
-            <div
+            {/* <div
               className="modal fade"
               id={`postModal${item?.id}`}
               data-bs-backdrop="static"
@@ -245,18 +252,24 @@ const UserContent = () => {
                                 className="btn card-text p-0"
                                 onClick={() => handleUnlikePost(item?.id)}
                               >
-                                Unlike
+                                <h3>
+                                  <i class="bi bi-heart-fill"></i>
+                                </h3>
                               </button>
                             ) : (
                               <button
                                 className="btn card-text p-0"
                                 onClick={() => handleLikePost(item?.id)}
                               >
-                                Like
+                                <h3>
+                                  <i class="bi bi-heart"></i>
+                                </h3>
                               </button>
                             )}
-                            <button className="btn card-text p-0 ms-2">
-                              Comment
+                            <button className="btn card-text p-0 ms-3">
+                              <h3>
+                                <i class="bi bi-chat-dots"></i>
+                              </h3>
                             </button>
                           </div>
                           <div>
@@ -285,7 +298,7 @@ const UserContent = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* Modal Content */}
           </div>
         ))}
