@@ -1,13 +1,13 @@
 import React from "react";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import User from "./pages/User";
-import Register from "./pages/Register";
-import EditProfile from "./pages/EditProfile";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import User from "./pages/user/User";
+import Register from "./pages/register/Register";
+import EditProfile from "./pages/edit-profile/EditProfile";
 import { useRoutes } from "react-router";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import FollowingPost from "./pages/FollowingPost";
-import MyProfile from "./pages/MyProfile";
+import FollowingPost from "./pages/following-post/FollowingPost";
+import MyProfile from "./pages/my-profile/MyProfile";
 
 const routes = [
   { path: "/", element: <Login /> },
